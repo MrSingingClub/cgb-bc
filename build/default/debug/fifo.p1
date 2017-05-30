@@ -1,0 +1,426 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"19 fifo.h
+[s S1 `*uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1 . buf maxPtr status putPtr getPtr ]
+[; ;fifo.h: 18: typedef struct
+[; ;fifo.h: 19: {
+[; ;fifo.h: 20: unsigned char* buf;
+[; ;fifo.h: 21: unsigned char maxPtr;
+[; ;fifo.h: 22: unsigned char status;
+[; ;fifo.h: 23: unsigned char putPtr;
+[; ;fifo.h: 24: unsigned char getPtr;
+[; ;fifo.h: 25: } fifoType;
+[; ;fifo.h: 27: void fifoInit(fifoType* fifo,unsigned char* buf,unsigned char size);
+[; ;fifo.h: 28: char fifoPut(fifoType* fifobuf,unsigned char put);
+[; ;fifo.h: 29: char fifoPutStr(fifoType* fifo,unsigned char* str);
+[; ;fifo.h: 30: char fifoPutStr0(fifoType* fifo,char* str);
+[; ;fifo.h: 31: char fifoPutBuf(fifoType* fifo,char* buf,char size);
+[; ;fifo.h: 32: char fifoGet(fifoType* fifoBuf,char* get);
+[; ;fifo.h: 33: char fifoGetBuf(fifoType* fifoBuf,char* buf,char size);
+[; ;fifo.h: 34: void fifoWipeBuffer(fifoType* fifiBuf);
+"3 fifo.c
+[v _fifoInit `(v ~T0 @X0 1 ef3`*S1`*uc`uc ]
+"4
+{
+[; ;fifo.c: 3: void fifoInit(fifoType* fifo,unsigned char* buf,unsigned char size)
+[; ;fifo.c: 4: {
+[e :U _fifoInit ]
+"3
+[v _fifo `*S1 ~T0 @X0 1 r1 ]
+[v _buf `*uc ~T0 @X0 1 r2 ]
+[v _size `uc ~T0 @X0 1 r3 ]
+"4
+[f ]
+[; ;fifo.c: 5: fifo->buf=buf;
+"5
+[e = . *U _fifo 0 _buf ]
+[; ;fifo.c: 6: fifo->maxPtr=size-1;
+"6
+[e = . *U _fifo 1 -> - -> _size `i -> 1 `i `uc ]
+[; ;fifo.c: 7: fifo->status=2;
+"7
+[e = . *U _fifo 2 -> -> 2 `i `uc ]
+[; ;fifo.c: 8: fifo->getPtr=fifo->maxPtr;
+"8
+[e = . *U _fifo 4 . *U _fifo 1 ]
+[; ;fifo.c: 9: fifo->putPtr=fifo->maxPtr;
+"9
+[e = . *U _fifo 3 . *U _fifo 1 ]
+[; ;fifo.c: 10: }
+"10
+[e :UE 2 ]
+}
+"12
+[v _fifoPut `(uc ~T0 @X0 1 ef2`*S1`uc ]
+"13
+{
+[; ;fifo.c: 12: char fifoPut(fifoType* fifo,char put)
+[; ;fifo.c: 13: {
+[e :U _fifoPut ]
+"12
+[v _fifo `*S1 ~T0 @X0 1 r1 ]
+[v _put `uc ~T0 @X0 1 r2 ]
+"13
+[f ]
+[; ;fifo.c: 14: if ((fifo->status & 1)==1)
+"14
+[e $ ! == & -> . *U _fifo 2 `i -> 1 `i -> 1 `i 4  ]
+[; ;fifo.c: 15: {
+"15
+{
+[; ;fifo.c: 16: return 0;
+"16
+[e ) -> -> 0 `i `uc ]
+[e $UE 3  ]
+"17
+}
+[e :U 4 ]
+[; ;fifo.c: 17: }
+[; ;fifo.c: 19: fifo->buf[fifo->putPtr]=put;
+"19
+[e = *U + . *U _fifo 0 * -> . *U _fifo 3 `ux -> -> # *U . *U _fifo 0 `ui `ux _put ]
+[; ;fifo.c: 20: fifo->status&=~2;
+"20
+[e =& . *U _fifo 2 -> ~ -> 2 `i `uc ]
+[; ;fifo.c: 22: fifo->putPtr--;
+"22
+[e -- . *U _fifo 3 -> -> 1 `i `uc ]
+[; ;fifo.c: 23: if (fifo->putPtr > fifo->maxPtr)
+"23
+[e $ ! > -> . *U _fifo 3 `i -> . *U _fifo 1 `i 5  ]
+[; ;fifo.c: 24: {
+"24
+{
+[; ;fifo.c: 25: fifo->putPtr=fifo->maxPtr;
+"25
+[e = . *U _fifo 3 . *U _fifo 1 ]
+"26
+}
+[e :U 5 ]
+[; ;fifo.c: 26: }
+[; ;fifo.c: 28: if (fifo->putPtr==fifo->getPtr)
+"28
+[e $ ! == -> . *U _fifo 3 `i -> . *U _fifo 4 `i 6  ]
+[; ;fifo.c: 29: {
+"29
+{
+[; ;fifo.c: 30: fifo->status|=1;
+"30
+[e =| . *U _fifo 2 -> -> 1 `i `uc ]
+"31
+}
+[e :U 6 ]
+[; ;fifo.c: 31: }
+[; ;fifo.c: 32: return 1;
+"32
+[e ) -> -> 1 `i `uc ]
+[e $UE 3  ]
+[; ;fifo.c: 33: }
+"33
+[e :UE 3 ]
+}
+"35
+[v _fifoPutStr `(uc ~T0 @X0 1 ef2`*S1`*uc ]
+"36
+{
+[; ;fifo.c: 35: char fifoPutStr(fifoType* fifo,char* str)
+[; ;fifo.c: 36: {
+[e :U _fifoPutStr ]
+"35
+[v _fifo `*S1 ~T0 @X0 1 r1 ]
+[v _str `*uc ~T0 @X0 1 r2 ]
+"36
+[f ]
+[; ;fifo.c: 37: while (*str)
+"37
+[e $U 8  ]
+[e :U 9 ]
+[; ;fifo.c: 38: {
+"38
+{
+[; ;fifo.c: 39: if (fifoPut(fifo,*str)==0)
+"39
+[e $ ! == -> ( _fifoPut (2 , _fifo *U _str `i -> 0 `i 11  ]
+[; ;fifo.c: 40: {
+"40
+{
+[; ;fifo.c: 41: return 0;
+"41
+[e ) -> -> 0 `i `uc ]
+[e $UE 7  ]
+"42
+}
+[e :U 11 ]
+[; ;fifo.c: 42: }
+[; ;fifo.c: 43: str++;
+"43
+[e ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x ]
+"44
+}
+[e :U 8 ]
+"37
+[e $ != -> *U _str `i -> -> -> 0 `i `uc `i 9  ]
+[e :U 10 ]
+[; ;fifo.c: 44: }
+[; ;fifo.c: 45: return 0;
+"45
+[e ) -> -> 0 `i `uc ]
+[e $UE 7  ]
+[; ;fifo.c: 46: }
+"46
+[e :UE 7 ]
+}
+"47
+[v _fifoPutStr0 `(uc ~T0 @X0 1 ef2`*S1`*uc ]
+"48
+{
+[; ;fifo.c: 47: char fifoPutStr0(fifoType* fifo,char* str)
+[; ;fifo.c: 48: {
+[e :U _fifoPutStr0 ]
+"47
+[v _fifo `*S1 ~T0 @X0 1 r1 ]
+[v _str `*uc ~T0 @X0 1 r2 ]
+"48
+[f ]
+[; ;fifo.c: 49: do
+"49
+[e :U 15 ]
+[; ;fifo.c: 50: {
+"50
+{
+[; ;fifo.c: 51: if (fifoPut(fifo,*str)==0)
+"51
+[e $ ! == -> ( _fifoPut (2 , _fifo *U _str `i -> 0 `i 16  ]
+[; ;fifo.c: 52: {
+"52
+{
+[; ;fifo.c: 53: return 0;
+"53
+[e ) -> -> 0 `i `uc ]
+[e $UE 12  ]
+"54
+}
+[e :U 16 ]
+"55
+}
+[; ;fifo.c: 54: }
+[; ;fifo.c: 55: }
+[; ;fifo.c: 56: while (*str++);
+"56
+[e $ != -> *U ++ _str * -> -> 1 `i `x -> -> # *U _str `i `x `i -> -> -> 0 `i `uc `i 15  ]
+[e :U 14 ]
+[; ;fifo.c: 57: return 0;
+"57
+[e ) -> -> 0 `i `uc ]
+[e $UE 12  ]
+[; ;fifo.c: 58: }
+"58
+[e :UE 12 ]
+}
+"60
+[v _fifoPutBuf `(uc ~T0 @X0 1 ef3`*S1`*uc`uc ]
+"61
+{
+[; ;fifo.c: 60: char fifoPutBuf(fifoType* fifo,char* buf,char size)
+[; ;fifo.c: 61: {
+[e :U _fifoPutBuf ]
+"60
+[v _fifo `*S1 ~T0 @X0 1 r1 ]
+[v _buf `*uc ~T0 @X0 1 r2 ]
+[v _size `uc ~T0 @X0 1 r3 ]
+"61
+[f ]
+[; ;fifo.c: 62: while (size)
+"62
+[e $U 18  ]
+[e :U 19 ]
+[; ;fifo.c: 63: {
+"63
+{
+[; ;fifo.c: 64: if (fifoPut(fifo,*buf)==0)
+"64
+[e $ ! == -> ( _fifoPut (2 , _fifo *U _buf `i -> 0 `i 21  ]
+[; ;fifo.c: 65: {
+"65
+{
+[; ;fifo.c: 66: return 0;
+"66
+[e ) -> -> 0 `i `uc ]
+[e $UE 17  ]
+"67
+}
+[e :U 21 ]
+[; ;fifo.c: 67: }
+[; ;fifo.c: 68: buf++;
+"68
+[e ++ _buf * -> -> 1 `i `x -> -> # *U _buf `i `x ]
+[; ;fifo.c: 69: size--;
+"69
+[e -- _size -> -> 1 `i `uc ]
+"70
+}
+[e :U 18 ]
+"62
+[e $ != -> _size `i -> -> -> 0 `i `uc `i 19  ]
+[e :U 20 ]
+[; ;fifo.c: 70: }
+[; ;fifo.c: 71: return 0;
+"71
+[e ) -> -> 0 `i `uc ]
+[e $UE 17  ]
+[; ;fifo.c: 72: }
+"72
+[e :UE 17 ]
+}
+"74
+[v _fifoGet `(uc ~T0 @X0 1 ef2`*S1`*uc ]
+"75
+{
+[; ;fifo.c: 74: char fifoGet(fifoType* fifo,char* get)
+[; ;fifo.c: 75: {
+[e :U _fifoGet ]
+"74
+[v _fifo `*S1 ~T0 @X0 1 r1 ]
+[v _get `*uc ~T0 @X0 1 r2 ]
+"75
+[f ]
+[; ;fifo.c: 76: if ((fifo->status & 2)==2)
+"76
+[e $ ! == & -> . *U _fifo 2 `i -> 2 `i -> 2 `i 23  ]
+[; ;fifo.c: 77: {
+"77
+{
+[; ;fifo.c: 78: return 0;
+"78
+[e ) -> -> 0 `i `uc ]
+[e $UE 22  ]
+"79
+}
+[e :U 23 ]
+[; ;fifo.c: 79: }
+[; ;fifo.c: 80: *get=fifo->buf[fifo->getPtr];
+"80
+[e = *U _get *U + . *U _fifo 0 * -> . *U _fifo 4 `ux -> -> # *U . *U _fifo 0 `ui `ux ]
+[; ;fifo.c: 81: fifo->status&=~1;
+"81
+[e =& . *U _fifo 2 -> ~ -> 1 `i `uc ]
+[; ;fifo.c: 83: fifo->getPtr--;
+"83
+[e -- . *U _fifo 4 -> -> 1 `i `uc ]
+[; ;fifo.c: 84: if (fifo->getPtr > fifo->maxPtr)
+"84
+[e $ ! > -> . *U _fifo 4 `i -> . *U _fifo 1 `i 24  ]
+[; ;fifo.c: 85: {
+"85
+{
+[; ;fifo.c: 86: fifo->getPtr=fifo->maxPtr;
+"86
+[e = . *U _fifo 4 . *U _fifo 1 ]
+"87
+}
+[e :U 24 ]
+[; ;fifo.c: 87: }
+[; ;fifo.c: 89: if (fifo->getPtr==fifo->putPtr)
+"89
+[e $ ! == -> . *U _fifo 4 `i -> . *U _fifo 3 `i 25  ]
+[; ;fifo.c: 90: {
+"90
+{
+[; ;fifo.c: 91: fifo->status|=2;
+"91
+[e =| . *U _fifo 2 -> -> 2 `i `uc ]
+"92
+}
+[e :U 25 ]
+[; ;fifo.c: 92: }
+[; ;fifo.c: 93: return 1;
+"93
+[e ) -> -> 1 `i `uc ]
+[e $UE 22  ]
+[; ;fifo.c: 94: }
+"94
+[e :UE 22 ]
+}
+"96
+[v _fifoGetBuf `(uc ~T0 @X0 1 ef3`*S1`*uc`uc ]
+"97
+{
+[; ;fifo.c: 96: char fifoGetBuf(fifoType* fifo,char* buf,char size)
+[; ;fifo.c: 97: {
+[e :U _fifoGetBuf ]
+"96
+[v _fifo `*S1 ~T0 @X0 1 r1 ]
+[v _buf `*uc ~T0 @X0 1 r2 ]
+[v _size `uc ~T0 @X0 1 r3 ]
+"97
+[f ]
+"98
+[v _elem `uc ~T0 @X0 1 a ]
+"99
+[v _copied `uc ~T0 @X0 1 a ]
+[; ;fifo.c: 98: char elem;
+[; ;fifo.c: 99: char copied=0;
+[e = _copied -> -> 0 `i `uc ]
+[; ;fifo.c: 100: if ((fifo->status & 2)==2)
+"100
+[e $ ! == & -> . *U _fifo 2 `i -> 2 `i -> 2 `i 27  ]
+[; ;fifo.c: 101: {
+"101
+{
+[; ;fifo.c: 102: return 0;
+"102
+[e ) -> -> 0 `i `uc ]
+[e $UE 26  ]
+"103
+}
+[e :U 27 ]
+[; ;fifo.c: 103: }
+[; ;fifo.c: 104: while (fifoGet(fifo,&elem) && (size-->0))
+"104
+[e $U 28  ]
+[e :U 29 ]
+[; ;fifo.c: 105: {
+"105
+{
+[; ;fifo.c: 106: *buf++=elem;
+"106
+[e = *U ++ _buf * -> -> 1 `i `x -> -> # *U _buf `i `x _elem ]
+[; ;fifo.c: 107: copied++;
+"107
+[e ++ _copied -> -> 1 `i `uc ]
+"108
+}
+[e :U 28 ]
+"104
+[e $ && != -> ( _fifoGet (2 , _fifo &U _elem `i -> -> -> 0 `i `uc `i > -> -- _size -> -> 1 `i `uc `i -> 0 `i 29  ]
+[e :U 30 ]
+[; ;fifo.c: 108: }
+[; ;fifo.c: 109: return copied;
+"109
+[e ) _copied ]
+[e $UE 26  ]
+[; ;fifo.c: 110: }
+"110
+[e :UE 26 ]
+}
+"112
+[v _fifoWipeBuffer `(v ~T0 @X0 1 ef1`*S1 ]
+"113
+{
+[; ;fifo.c: 112: void fifoWipeBuffer(fifoType* fifoBuf)
+[; ;fifo.c: 113: {
+[e :U _fifoWipeBuffer ]
+"112
+[v _fifoBuf `*S1 ~T0 @X0 1 r1 ]
+"113
+[f ]
+[; ;fifo.c: 114: fifoBuf->getPtr=fifoBuf->putPtr;
+"114
+[e = . *U _fifoBuf 4 . *U _fifoBuf 3 ]
+[; ;fifo.c: 115: fifoBuf->status=2;
+"115
+[e = . *U _fifoBuf 2 -> -> 2 `i `uc ]
+[; ;fifo.c: 116: }
+"116
+[e :UE 31 ]
+}

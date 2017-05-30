@@ -1,0 +1,950 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F25K22 ]
+[d frameptr 4065 ]
+"12 C:\Projekte\source\CGB.X\blink.c
+[v _ledInit ledInit `(v  1 e 1 0 ]
+"21
+[v _ledOn ledOn `(v  1 e 1 0 ]
+"28
+[v _ledOff ledOff `(v  1 e 1 0 ]
+"46
+[v _ledFlash ledFlash `(v  1 e 1 0 ]
+"52
+[v _ledTact ledTact `(v  1 e 1 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"11 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.42\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"12 C:\Projekte\source\CGB.X\eeprom.c
+[v _EEWrite EEWrite `(v  1 e 1 0 ]
+"40
+[v _EERead EERead `(uc  1 e 1 0 ]
+"3 C:\Projekte\source\CGB.X\fifo.c
+[v _fifoInit fifoInit `(v  1 e 1 0 ]
+"12
+[v _fifoPut fifoPut `(uc  1 e 1 0 ]
+[v i2_fifoPut fifoPut `(uc  1 e 1 0 ]
+"35
+[v _fifoPutStr fifoPutStr `(uc  1 e 1 0 ]
+"47
+[v _fifoPutStr0 fifoPutStr0 `(uc  1 e 1 0 ]
+"60
+[v _fifoPutBuf fifoPutBuf `(uc  1 e 1 0 ]
+"74
+[v _fifoGet fifoGet `(uc  1 e 1 0 ]
+[v i2_fifoGet fifoGet `(uc  1 e 1 0 ]
+"96
+[v _fifoGetBuf fifoGetBuf `(uc  1 e 1 0 ]
+"6 C:\Projekte\source\CGB.X\intosc.c
+[v _SetupInternalOscillator SetupInternalOscillator `(v  1 e 1 0 ]
+"89 C:\Projekte\source\CGB.X\main.c
+[v _LoadConfigData LoadConfigData `(v  1 e 1 0 ]
+"99
+[v _InitSystem InitSystem `(v  1 e 1 0 ]
+"140
+[v _InitUart InitUart `(v  1 e 1 0 ]
+"149
+[v _IntHighRoutine IntHighRoutine `IIH(v  1 e 1 0 ]
+"158
+[v _myDelay myDelay `(v  1 e 1 0 ]
+"168
+[v _crcOk crcOk `(uc  1 e 1 0 ]
+"173
+[v _decodeRecvBuffer decodeRecvBuffer `(v  1 e 1 0 ]
+"178
+[v _main main `(v  1 e 1 0 ]
+"4 C:\Projekte\source\CGB.X\uart.c
+[v _uartInit uartInit `(v  1 e 1 0 ]
+"64
+[v _GetBaudRateConfig GetBaudRateConfig `(uc  1 e 1 0 ]
+"105
+[v _SetBaudRate SetBaudRate `(uc  1 e 1 0 ]
+"130
+[v _uartInitHalfDuplex uartInitHalfDuplex `(v  1 e 1 0 ]
+"139
+[v _uartEnableSend uartEnableSend `(v  1 e 1 0 ]
+[v i2_uartEnableSend uartEnableSend `(v  1 e 1 0 ]
+"148
+[v _uartEnableRecv uartEnableRecv `(v  1 e 1 0 ]
+"160
+[v _uartSendByte uartSendByte `(uc  1 e 1 0 ]
+"185
+[v _uartSendBuf uartSendBuf `(uc  1 e 1 0 ]
+"194
+[v _uartRecvByte uartRecvByte `(uc  1 e 1 0 ]
+"206
+[v _uartInterruptHandler uartInterruptHandler `(v  1 e 1 0 ]
+[s S381 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+"65 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f25k22.h
+[u S388 . 1 `S381 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES388  1 e 1 @3896 ]
+[s S665 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 ANSC2 1 0 :1:2 
+`uc 1 ANSC3 1 0 :1:3 
+`uc 1 ANSC4 1 0 :1:4 
+`uc 1 ANSC5 1 0 :1:5 
+`uc 1 ANSC6 1 0 :1:6 
+`uc 1 ANSC7 1 0 :1:7 
+]
+"161
+[u S673 . 1 `S665 1 . 1 0 ]
+[v _ANSELCbits ANSELCbits `VES673  1 e 1 @3898 ]
+[s S1049 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 CKTXP 1 0 :1:4 
+`uc 1 DTRXP 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"4222
+[s S1058 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 SCKP 1 0 :1:4 
+]
+[s S1146 . 1 `uc 1 ABDEN2 1 0 :1:0 
+`uc 1 WUE2 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG162 1 0 :1:3 
+`uc 1 SCKP2 1 0 :1:4 
+`uc 1 DTRXP2 1 0 :1:5 
+`uc 1 RCIDL2 1 0 :1:6 
+`uc 1 ABDOVF2 1 0 :1:7 
+]
+[s S1155 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXCKP2 1 0 :1:4 
+`uc 1 RXDTP2 1 0 :1:5 
+`uc 1 RCMT2 1 0 :1:6 
+]
+[u S1160 . 1 `S1049 1 . 1 0 `S1058 1 . 1 0 `S1146 1 . 1 0 `S1155 1 . 1 0 ]
+[v _BAUDCON2bits BAUDCON2bits `VES1160  1 e 1 @3952 ]
+"4442
+[v _RCSTA2 RCSTA2 `VEuc  1 e 1 @3953 ]
+[s S773 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"4487
+[s S782 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 ADEN 1 0 :1:3 
+]
+[s S965 . 1 `uc 1 RX9D2 1 0 :1:0 
+`uc 1 OERR2 1 0 :1:1 
+`uc 1 FERR2 1 0 :1:2 
+`uc 1 ADDEN2 1 0 :1:3 
+`uc 1 CREN2 1 0 :1:4 
+`uc 1 SREN2 1 0 :1:5 
+`uc 1 RX92 1 0 :1:6 
+`uc 1 SPEN2 1 0 :1:7 
+]
+[s S974 . 1 `uc 1 RCD82 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC8_92 1 0 :1:6 
+]
+[s S978 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC92 1 0 :1:6 
+]
+[u S981 . 1 `S773 1 . 1 0 `S782 1 . 1 0 `S965 1 . 1 0 `S974 1 . 1 0 `S978 1 . 1 0 ]
+[v _RCSTA2bits RCSTA2bits `VES981  1 e 1 @3953 ]
+"4730
+[v _TXSTA2 TXSTA2 `VEuc  1 e 1 @3954 ]
+[s S724 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"4767
+[s S913 . 1 `uc 1 TX9D2 1 0 :1:0 
+`uc 1 TRMT2 1 0 :1:1 
+`uc 1 BRGH2 1 0 :1:2 
+`uc 1 SENDB2 1 0 :1:3 
+`uc 1 SYNC2 1 0 :1:4 
+`uc 1 TXEN2 1 0 :1:5 
+`uc 1 TX92 1 0 :1:6 
+`uc 1 CSRC2 1 0 :1:7 
+]
+[s S922 . 1 `uc 1 TXD82 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 TX8_92 1 0 :1:6 
+]
+[u S926 . 1 `S724 1 . 1 0 `S913 1 . 1 0 `S922 1 . 1 0 ]
+[v _TXSTA2bits TXSTA2bits `VES926  1 e 1 @3954 ]
+"4982
+[v _TXREG2 TXREG2 `VEuc  1 e 1 @3955 ]
+"5020
+[v _RCREG2 RCREG2 `VEuc  1 e 1 @3956 ]
+"5058
+[v _SPBRG2 SPBRG2 `VEuc  1 e 1 @3957 ]
+"5096
+[v _SPBRGH2 SPBRGH2 `VEuc  1 e 1 @3958 ]
+"5958
+[v _PIE4 PIE4 `VEuc  1 e 1 @3962 ]
+"6062
+[v _PIE5 PIE5 `VEuc  1 e 1 @3965 ]
+"7242
+[v _LATA LATA `VEuc  1 e 1 @3977 ]
+"7354
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+[s S341 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"7610
+[s S350 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+[u S359 . 1 `S341 1 . 1 0 `S350 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES359  1 e 1 @3986 ]
+[s S398 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"7832
+[s S407 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+[u S416 . 1 `S398 1 . 1 0 `S407 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES416  1 e 1 @3987 ]
+[s S684 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"8054
+[s S693 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+[u S702 . 1 `S684 1 . 1 0 `S693 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES702  1 e 1 @3988 ]
+[s S114 . 1 `uc 1 TUN 1 0 :6:0 
+`uc 1 PLLEN 1 0 :1:6 
+`uc 1 INTSRC 1 0 :1:7 
+]
+"8285
+[s S118 . 1 `uc 1 TUN0 1 0 :1:0 
+`uc 1 TUN1 1 0 :1:1 
+`uc 1 TUN2 1 0 :1:2 
+`uc 1 TUN3 1 0 :1:3 
+`uc 1 TUN4 1 0 :1:4 
+`uc 1 TUN5 1 0 :1:5 
+]
+[u S125 . 1 `S114 1 . 1 0 `S118 1 . 1 0 ]
+[v _OSCTUNEbits OSCTUNEbits `VES125  1 e 1 @3995 ]
+"8615
+[v _PIE1 PIE1 `VEuc  1 e 1 @3997 ]
+[s S1194 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TX1IE 1 0 :1:4 
+`uc 1 RC1IE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+]
+"8637
+[s S1202 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SSPIE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+]
+[u S1207 . 1 `S1194 1 . 1 0 `S1202 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES1207  1 e 1 @3997 ]
+[s S1275 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+]
+"8714
+[s S1283 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+]
+[u S1288 . 1 `S1275 1 . 1 0 `S1283 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES1288  1 e 1 @3998 ]
+[s S850 . 1 `uc 1 TMR1IP 1 0 :1:0 
+`uc 1 TMR2IP 1 0 :1:1 
+`uc 1 CCP1IP 1 0 :1:2 
+`uc 1 SSP1IP 1 0 :1:3 
+`uc 1 TX1IP 1 0 :1:4 
+`uc 1 RC1IP 1 0 :1:5 
+`uc 1 ADIP 1 0 :1:6 
+]
+"8791
+[s S858 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 SSPIP 1 0 :1:3 
+`uc 1 TXIP 1 0 :1:4 
+`uc 1 RCIP 1 0 :1:5 
+]
+[u S863 . 1 `S850 1 . 1 0 `S858 1 . 1 0 ]
+[v _IPR1bits IPR1bits `VES863  1 e 1 @3999 ]
+"8846
+[v _PIE2 PIE2 `VEuc  1 e 1 @4000 ]
+[s S2064 . 1 `uc 1 CCP2IF 1 0 :1:0 
+`uc 1 TMR3IF 1 0 :1:1 
+`uc 1 HLVDIF 1 0 :1:2 
+`uc 1 BCL1IF 1 0 :1:3 
+`uc 1 EEIF 1 0 :1:4 
+`uc 1 C2IF 1 0 :1:5 
+`uc 1 C1IF 1 0 :1:6 
+`uc 1 OSCFIF 1 0 :1:7 
+]
+"8958
+[s S2073 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 LVDIF 1 0 :1:2 
+`uc 1 BCLIF 1 0 :1:3 
+]
+[s S2077 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 CMIF 1 0 :1:6 
+]
+[u S2080 . 1 `S2064 1 . 1 0 `S2073 1 . 1 0 `S2077 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES2080  1 e 1 @4001 ]
+"9104
+[v _PIE3 PIE3 `VEuc  1 e 1 @4003 ]
+[s S1224 . 1 `uc 1 TMR1GIE 1 0 :1:0 
+`uc 1 TMR3GIE 1 0 :1:1 
+`uc 1 TMR5GIE 1 0 :1:2 
+`uc 1 CTMUIE 1 0 :1:3 
+`uc 1 TX2IE 1 0 :1:4 
+`uc 1 RC2IE 1 0 :1:5 
+`uc 1 BCL2IE 1 0 :1:6 
+`uc 1 SSP2IE 1 0 :1:7 
+]
+"9134
+[s S1233 . 1 `uc 1 RXB0IE 1 0 :1:0 
+`uc 1 RXB1IE 1 0 :1:1 
+`uc 1 TXB0IE 1 0 :1:2 
+`uc 1 TXB1IE 1 0 :1:3 
+`uc 1 TXB2IE 1 0 :1:4 
+]
+[s S1239 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RXBNIE 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 TXBNIE 1 0 :1:4 
+]
+[u S1244 . 1 `S1224 1 . 1 0 `S1233 1 . 1 0 `S1239 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES1244  1 e 1 @4003 ]
+[s S1307 . 1 `uc 1 TMR1GIF 1 0 :1:0 
+`uc 1 TMR3GIF 1 0 :1:1 
+`uc 1 TMR5GIF 1 0 :1:2 
+`uc 1 CTMUIF 1 0 :1:3 
+`uc 1 TX2IF 1 0 :1:4 
+`uc 1 RC2IF 1 0 :1:5 
+`uc 1 BCL2IF 1 0 :1:6 
+`uc 1 SSP2IF 1 0 :1:7 
+]
+"9237
+[s S1316 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RXBNIF 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 TXBNIF 1 0 :1:4 
+]
+[u S1321 . 1 `S1307 1 . 1 0 `S1316 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES1321  1 e 1 @4004 ]
+[s S1016 . 1 `uc 1 TMR1GIP 1 0 :1:0 
+`uc 1 TMR3GIP 1 0 :1:1 
+`uc 1 TMR5GIP 1 0 :1:2 
+`uc 1 CTMUIP 1 0 :1:3 
+`uc 1 TX2IP 1 0 :1:4 
+`uc 1 RC2IP 1 0 :1:5 
+`uc 1 BCL2IP 1 0 :1:6 
+`uc 1 SSP2IP 1 0 :1:7 
+]
+"9315
+[s S1025 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RXBNIP 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 TXBNIP 1 0 :1:4 
+]
+[u S1030 . 1 `S1016 1 . 1 0 `S1025 1 . 1 0 ]
+[v _IPR3bits IPR3bits `VES1030  1 e 1 @4005 ]
+[s S2035 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+"9391
+[s S2044 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 EEFS 1 0 :1:6 
+]
+[u S2047 . 1 `S2035 1 . 1 0 `S2044 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES2047  1 e 1 @4006 ]
+"9436
+[v _EECON2 EECON2 `VEuc  1 e 1 @4007 ]
+"9456
+[v _EEDATA EEDATA `VEuc  1 e 1 @4008 ]
+"9476
+[v _EEADR EEADR `VEuc  1 e 1 @4009 ]
+"9546
+[v _RCSTA1 RCSTA1 `VEuc  1 e 1 @4011 ]
+"9599
+[s S785 . 1 `uc 1 RX9D1 1 0 :1:0 
+`uc 1 OERR1 1 0 :1:1 
+`uc 1 FERR1 1 0 :1:2 
+`uc 1 ADDEN1 1 0 :1:3 
+`uc 1 CREN1 1 0 :1:4 
+`uc 1 SREN1 1 0 :1:5 
+`uc 1 RX91 1 0 :1:6 
+`uc 1 SPEN1 1 0 :1:7 
+]
+[s S794 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[s S798 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S801 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 SRENA 1 0 :1:5 
+]
+[u S804 . 1 `S773 1 . 1 0 `S782 1 . 1 0 `S785 1 . 1 0 `S794 1 . 1 0 `S798 1 . 1 0 `S801 1 . 1 0 ]
+[v _RCSTA1bits RCSTA1bits `VES804  1 e 1 @4011 ]
+"10002
+[v _TXSTA1 TXSTA1 `VEuc  1 e 1 @4012 ]
+"10043
+[s S733 . 1 `uc 1 TX9D1 1 0 :1:0 
+`uc 1 TRMT1 1 0 :1:1 
+`uc 1 BRGH1 1 0 :1:2 
+`uc 1 SENDB1 1 0 :1:3 
+`uc 1 SYNC1 1 0 :1:4 
+`uc 1 TXEN1 1 0 :1:5 
+`uc 1 TX91 1 0 :1:6 
+`uc 1 CSRC1 1 0 :1:7 
+]
+[s S742 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S746 . 1 `S724 1 . 1 0 `S733 1 . 1 0 `S742 1 . 1 0 ]
+[v _TXSTA1bits TXSTA1bits `VES746  1 e 1 @4012 ]
+"10377
+[v _TXREG1 TXREG1 `VEuc  1 e 1 @4013 ]
+"10455
+[v _RCREG1 RCREG1 `VEuc  1 e 1 @4014 ]
+"10533
+[v _SPBRG1 SPBRG1 `VEuc  1 e 1 @4015 ]
+"10611
+[v _SPBRGH1 SPBRGH1 `VEuc  1 e 1 @4016 ]
+"11639
+[s S1061 . 1 `uc 1 ABDEN1 1 0 :1:0 
+`uc 1 WUE1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG161 1 0 :1:3 
+`uc 1 SCKP1 1 0 :1:4 
+`uc 1 DTRXP1 1 0 :1:5 
+`uc 1 RCIDL1 1 0 :1:6 
+`uc 1 ABDOVF1 1 0 :1:7 
+]
+[s S1070 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXCKP 1 0 :1:4 
+`uc 1 RXDTP 1 0 :1:5 
+`uc 1 RCMT 1 0 :1:6 
+]
+[s S1075 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 TXCKP1 1 0 :1:4 
+`uc 1 RXDTP1 1 0 :1:5 
+`uc 1 RCMT1 1 0 :1:6 
+]
+[s S1080 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 RXCKP 1 0 :1:5 
+]
+[s S1083 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 W4E 1 0 :1:1 
+]
+[u S1086 . 1 `S1049 1 . 1 0 `S1058 1 . 1 0 `S1061 1 . 1 0 `S1070 1 . 1 0 `S1075 1 . 1 0 `S1080 1 . 1 0 `S1083 1 . 1 0 ]
+[v _BAUDCON1bits BAUDCON1bits `VES1086  1 e 1 @4024 ]
+[s S225 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+]
+"15038
+[s S227 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 NOT_POR 1 0 :1:1 
+]
+[s S230 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 NOT_PD 1 0 :1:2 
+]
+[s S233 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_TO 1 0 :1:3 
+]
+[s S236 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NOT_RI 1 0 :1:4 
+]
+[s S239 . 1 `uc 1 nBOR 1 0 :1:0 
+`uc 1 nPOR 1 0 :1:1 
+`uc 1 nPD 1 0 :1:2 
+`uc 1 nTO 1 0 :1:3 
+`uc 1 nRI 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SBOREN 1 0 :1:6 
+`uc 1 IPEN 1 0 :1:7 
+]
+[s S248 . 1 `uc 1 BOR 1 0 :1:0 
+`uc 1 POR 1 0 :1:1 
+`uc 1 PD 1 0 :1:2 
+`uc 1 TO 1 0 :1:3 
+`uc 1 RI 1 0 :1:4 
+]
+[u S254 . 1 `S225 1 . 1 0 `S227 1 . 1 0 `S230 1 . 1 0 `S233 1 . 1 0 `S236 1 . 1 0 `S239 1 . 1 0 `S248 1 . 1 0 ]
+[v _RCONbits RCONbits `VES254  1 e 1 @4048 ]
+[s S140 . 1 `uc 1 LFIOFS 1 0 :1:0 
+`uc 1 MFIOFS 1 0 :1:1 
+`uc 1 PRISD 1 0 :1:2 
+`uc 1 SOSCGO 1 0 :1:3 
+`uc 1 MFIOSEL 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SOSCRUN 1 0 :1:6 
+`uc 1 PLLRDY 1 0 :1:7 
+]
+"15173
+[u S149 . 1 `S140 1 . 1 0 ]
+[v _OSCCON2bits OSCCON2bits `VES149  1 e 1 @4050 ]
+[s S82 . 1 `uc 1 SCS 1 0 :2:0 
+`uc 1 HFIOFS 1 0 :1:2 
+`uc 1 OSTS 1 0 :1:3 
+`uc 1 IRCF 1 0 :3:4 
+`uc 1 IDLEN 1 0 :1:7 
+]
+"15236
+[s S88 . 1 `uc 1 SCS0 1 0 :1:0 
+`uc 1 SCS1 1 0 :1:1 
+`uc 1 IOFS 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+`uc 1 IRCF2 1 0 :1:6 
+]
+[u S96 . 1 `S82 1 . 1 0 `S88 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES96  1 e 1 @4051 ]
+"15931
+[v _INTCON3 INTCON3 `VEuc  1 e 1 @4080 ]
+"16093
+[v _INTCON INTCON `VEuc  1 e 1 @4082 ]
+[s S292 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INT0IF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INT0IE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"16125
+[s S301 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 INT0F 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 INT0E 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+[s S310 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S314 . 1 `S292 1 . 1 0 `S301 1 . 1 0 `S310 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES314  1 e 1 @4082 ]
+"66 C:\Projekte\source\CGB.X\main.c
+[v _uartSendBuffer uartSendBuffer `[132]uc  1 e 132 0 ]
+"67
+[v _uartRecvBuffer uartRecvBuffer `[132]uc  1 e 132 0 ]
+"68
+[v _packetRecvBuffer packetRecvBuffer `[132]uc  1 e 132 0 ]
+[s S180 . 9 `i 1 count 2 0 `uc 1 on 1 2 `i 1 onTime 2 3 `i 1 offTime 2 5 `uc 1 bitMask 1 7 `uc 1 mode 1 8 ]
+"73
+[v _ledRx ledRx `S180  1 e 9 0 ]
+"74
+[v _ledTx ledTx `S180  1 e 9 0 ]
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+"76
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v _uart uart `S193  1 e 25 0 ]
+"78
+[v _adr adr `uc  1 e 1 0 ]
+"79
+[v _mode mode `uc  1 e 1 0 ]
+"80
+[v _packetReady packetReady `uc  1 e 1 0 ]
+"81
+[v _dataAvailable dataAvailable `uc  1 e 1 0 ]
+"85
+[v _packetCtrl packetCtrl `uc  1 e 1 0 ]
+"86
+[v _packetAddress packetAddress `uc  1 e 1 0 ]
+"87
+[v _packetRecvLen packetRecvLen `uc  1 e 1 0 ]
+"178
+[v _main main `(v  1 e 1 0 ]
+{
+"180
+[v main@b b `uc  1 a 1 55 ]
+"182
+[v main@nullByte nullByte `uc  1 a 1 54 ]
+"183
+[v main@pckRecvPtr pckRecvPtr `uc  1 a 1 53 ]
+"326
+} 0
+"160 C:\Projekte\source\CGB.X\uart.c
+[v _uartSendByte uartSendByte `(uc  1 e 1 0 ]
+{
+"162
+[v uartSendByte@res res `uc  1 a 1 9 ]
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+"160
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v uartSendByte@uart uart `*.39S193  1 p 2 6 ]
+[v uartSendByte@snd snd `uc  1 p 1 8 ]
+"168
+} 0
+"185
+[v _uartSendBuf uartSendBuf `(uc  1 e 1 0 ]
+{
+"187
+[v uartSendBuf@res res `uc  1 a 1 16 ]
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+"185
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v uartSendBuf@uart uart `*.39S193  1 p 2 11 ]
+[v uartSendBuf@str str `*.39uc  1 p 2 13 ]
+[v uartSendBuf@size size `uc  1 p 1 15 ]
+"192
+} 0
+"60 C:\Projekte\source\CGB.X\fifo.c
+[v _fifoPutBuf fifoPutBuf `(uc  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[v fifoPutBuf@fifo fifo `*.39S21  1 p 2 6 ]
+[v fifoPutBuf@buf buf `*.39uc  1 p 2 8 ]
+[v fifoPutBuf@size size `uc  1 p 1 10 ]
+"72
+} 0
+"12
+[v _fifoPut fifoPut `(uc  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[v fifoPut@fifo fifo `*.39S21  1 p 2 0 ]
+[v fifoPut@put put `uc  1 p 1 2 ]
+"33
+} 0
+"194 C:\Projekte\source\CGB.X\uart.c
+[v _uartRecvByte uartRecvByte `(uc  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v uartRecvByte@uart uart `*.39S193  1 p 2 7 ]
+[v uartRecvByte@data data `*.39uc  1 p 2 9 ]
+"197
+} 0
+"74 C:\Projekte\source\CGB.X\fifo.c
+[v _fifoGet fifoGet `(uc  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[v fifoGet@fifo fifo `*.39S21  1 p 2 0 ]
+[v fifoGet@get get `*.39uc  1 p 2 2 ]
+"94
+} 0
+"158 C:\Projekte\source\CGB.X\main.c
+[v _myDelay myDelay `(v  1 e 1 0 ]
+{
+"160
+[v myDelay@i i `i  1 a 2 4 ]
+"158
+[v myDelay@per per `l  1 p 4 0 ]
+"166
+} 0
+"52 C:\Projekte\source\CGB.X\blink.c
+[v _ledTact ledTact `(v  1 e 1 0 ]
+{
+[s S180 . 9 `i 1 count 2 0 `uc 1 on 1 2 `i 1 onTime 2 3 `i 1 offTime 2 5 `uc 1 bitMask 1 7 `uc 1 mode 1 8 ]
+[v ledTact@led led `*.39S180  1 p 2 0 ]
+"71
+} 0
+"21
+[v _ledOn ledOn `(v  1 e 1 0 ]
+{
+[s S180 . 9 `i 1 count 2 0 `uc 1 on 1 2 `i 1 onTime 2 3 `i 1 offTime 2 5 `uc 1 bitMask 1 7 `uc 1 mode 1 8 ]
+[v ledOn@led led `*.39S180  1 p 2 0 ]
+"26
+} 0
+"28
+[v _ledOff ledOff `(v  1 e 1 0 ]
+{
+[s S180 . 9 `i 1 count 2 0 `uc 1 on 1 2 `i 1 onTime 2 3 `i 1 offTime 2 5 `uc 1 bitMask 1 7 `uc 1 mode 1 8 ]
+[v ledOff@led led `*.39S180  1 p 2 0 ]
+"33
+} 0
+"46
+[v _ledFlash ledFlash `(v  1 e 1 0 ]
+{
+[s S180 . 9 `i 1 count 2 0 `uc 1 on 1 2 `i 1 onTime 2 3 `i 1 offTime 2 5 `uc 1 bitMask 1 7 `uc 1 mode 1 8 ]
+[v ledFlash@led led `*.39S180  1 p 2 0 ]
+"50
+} 0
+"173 C:\Projekte\source\CGB.X\main.c
+[v _decodeRecvBuffer decodeRecvBuffer `(v  1 e 1 0 ]
+{
+"176
+} 0
+"168
+[v _crcOk crcOk `(uc  1 e 1 0 ]
+{
+"171
+} 0
+"140
+[v _InitUart InitUart `(v  1 e 1 0 ]
+{
+"147
+} 0
+"130 C:\Projekte\source\CGB.X\uart.c
+[v _uartInitHalfDuplex uartInitHalfDuplex `(v  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v uartInitHalfDuplex@uart uart `*.39S193  1 p 2 0 ]
+[v uartInitHalfDuplex@port port `*.39VEuc  1 p 2 2 ]
+[v uartInitHalfDuplex@bt bt `uc  1 p 1 4 ]
+"137
+} 0
+"4
+[v _uartInit uartInit `(v  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v uartInit@uart uart `*.39S193  1 p 2 34 ]
+[v uartInit@num num `uc  1 p 1 36 ]
+[v uartInit@baud baud `l  1 p 4 37 ]
+[v uartInit@osc osc `l  1 p 4 41 ]
+[v uartInit@sendbuf sendbuf `*.39uc  1 p 2 45 ]
+[v uartInit@sendSize sendSize `uc  1 p 1 47 ]
+[v uartInit@recvbuf recvbuf `*.39uc  1 p 2 48 ]
+[v uartInit@recvSize recvSize `uc  1 p 1 50 ]
+"62
+} 0
+"3 C:\Projekte\source\CGB.X\fifo.c
+[v _fifoInit fifoInit `(v  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[v fifoInit@fifo fifo `*.39S21  1 p 2 0 ]
+[v fifoInit@buf buf `*.39uc  1 p 2 2 ]
+[v fifoInit@size size `uc  1 p 1 4 ]
+"10
+} 0
+"105 C:\Projekte\source\CGB.X\uart.c
+[v _SetBaudRate SetBaudRate `(uc  1 e 1 0 ]
+{
+"107
+[v SetBaudRate@brg16 brg16 `uc  1 a 1 33 ]
+"109
+[v SetBaudRate@l l `uc  1 a 1 32 ]
+"108
+[v SetBaudRate@h h `uc  1 a 1 31 ]
+"110
+[v SetBaudRate@o o `uc  1 a 1 30 ]
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+"105
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v SetBaudRate@uart uart `*.39S193  1 p 2 20 ]
+[v SetBaudRate@rate rate `l  1 p 4 22 ]
+[v SetBaudRate@osc osc `l  1 p 4 26 ]
+"128
+} 0
+"64
+[v _GetBaudRateConfig GetBaudRateConfig `(uc  1 e 1 0 ]
+{
+"66
+[v GetBaudRateConfig@brg brg `i  1 a 2 18 ]
+"64
+[v GetBaudRateConfig@rate rate `l  1 p 4 0 ]
+[v GetBaudRateConfig@osc osc `l  1 p 4 4 ]
+[v GetBaudRateConfig@setBRG16 setBRG16 `*.39uc  1 p 2 8 ]
+[v GetBaudRateConfig@brgh brgh `*.39uc  1 p 2 10 ]
+[v GetBaudRateConfig@brgl brgl `*.39uc  1 p 2 12 ]
+"103
+} 0
+"139
+[v _uartEnableSend uartEnableSend `(v  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v uartEnableSend@uart uart `*.39S193  1 p 2 0 ]
+[v uartEnableSend@onoff onoff `uc  1 p 1 2 ]
+"147
+} 0
+"148
+[v _uartEnableRecv uartEnableRecv `(v  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v uartEnableRecv@uart uart `*.39S193  1 p 2 0 ]
+[v uartEnableRecv@onoff onoff `uc  1 p 1 2 ]
+"155
+} 0
+"99 C:\Projekte\source\CGB.X\main.c
+[v _InitSystem InitSystem `(v  1 e 1 0 ]
+{
+"138
+} 0
+"12 C:\Projekte\source\CGB.X\blink.c
+[v _ledInit ledInit `(v  1 e 1 0 ]
+{
+[s S180 . 9 `i 1 count 2 0 `uc 1 on 1 2 `i 1 onTime 2 3 `i 1 offTime 2 5 `uc 1 bitMask 1 7 `uc 1 mode 1 8 ]
+[v ledInit@led led `*.39S180  1 p 2 0 ]
+[v ledInit@on on `i  1 p 2 2 ]
+[v ledInit@off off `i  1 p 2 4 ]
+[v ledInit@bm bm `uc  1 p 1 6 ]
+"19
+} 0
+"6 C:\Projekte\source\CGB.X\intosc.c
+[v _SetupInternalOscillator SetupInternalOscillator `(v  1 e 1 0 ]
+{
+[v SetupInternalOscillator@setBits setBits `uc  1 a 1 wreg ]
+[v SetupInternalOscillator@setBits setBits `uc  1 a 1 wreg ]
+[v SetupInternalOscillator@enpll enpll `uc  1 p 1 37 ]
+"8
+[v SetupInternalOscillator@setBits setBits `uc  1 a 1 1 ]
+"14
+} 0
+"89 C:\Projekte\source\CGB.X\main.c
+[v _LoadConfigData LoadConfigData `(v  1 e 1 0 ]
+{
+"92
+} 0
+"40 C:\Projekte\source\CGB.X\eeprom.c
+[v _EERead EERead `(uc  1 e 1 0 ]
+{
+[v EERead@adresse adresse `uc  1 a 1 wreg ]
+"42
+[v EERead@orgGIE orgGIE `uc  1 a 1 1 ]
+"40
+[v EERead@adresse adresse `uc  1 a 1 wreg ]
+"44
+[v EERead@adresse adresse `uc  1 a 1 0 ]
+"55
+} 0
+"149 C:\Projekte\source\CGB.X\main.c
+[v _IntHighRoutine IntHighRoutine `IIH(v  1 e 1 0 ]
+{
+"156
+} 0
+"206 C:\Projekte\source\CGB.X\uart.c
+[v _uartInterruptHandler uartInterruptHandler `(v  1 e 1 0 ]
+{
+"214
+[v uartInterruptHandler@rcsta rcsta `*.39VEuc  1 a 2 20 ]
+"215
+[v uartInterruptHandler@txsta txsta `*.39VEuc  1 a 2 13 ]
+"217
+[v uartInterruptHandler@data data `uc  1 a 1 22 ]
+"210
+[v uartInterruptHandler@iRxFlag iRxFlag `uc  1 a 1 19 ]
+"213
+[v uartInterruptHandler@oErr oErr `uc  1 a 1 18 ]
+"212
+[v uartInterruptHandler@fErr fErr `uc  1 a 1 17 ]
+"211
+[v uartInterruptHandler@iRxEnable iRxEnable `uc  1 a 1 16 ]
+"208
+[v uartInterruptHandler@iTxFlag iTxFlag `uc  1 a 1 15 ]
+"209
+[v uartInterruptHandler@iTxEnable iTxEnable `uc  1 a 1 12 ]
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+"206
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v uartInterruptHandler@uart uart `*.39S193  1 p 2 7 ]
+"299
+} 0
+"139
+[v i2_uartEnableSend uartEnableSend `(v  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[s S193 . 25 `S21 1 sendFifo 6 0 `S21 1 recvFifo 6 6 `uc 1 SendEnabled 1 12 `uc 1 RecvEnabled 1 13 `*.39VEuc 1 txReg 2 14 `*.39VEuc 1 rxReg 2 16 `uc 1 status 1 18 `uc 1 number 1 19 `uc 1 hdFlag 1 20 `*.39VEuc 1 hdPort 2 21 `uc 1 hdOnMask 1 23 `uc 1 hdOffMask 1 24 ]
+[v i2uartEnableSend@uart uart `*.39S193  1 p 2 0 ]
+[v i2uartEnableSend@onoff onoff `uc  1 p 1 2 ]
+"147
+} 0
+"12 C:\Projekte\source\CGB.X\fifo.c
+[v i2_fifoPut fifoPut `(uc  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[v i2fifoPut@fifo fifo `*.39S21  1 p 2 0 ]
+[v i2fifoPut@put put `uc  1 p 1 2 ]
+"33
+} 0
+"74
+[v i2_fifoGet fifoGet `(uc  1 e 1 0 ]
+{
+[s S21 . 6 `*.39uc 1 buf 2 0 `uc 1 maxPtr 1 2 `uc 1 status 1 3 `uc 1 putPtr 1 4 `uc 1 getPtr 1 5 ]
+[v i2fifoGet@fifo fifo `*.39S21  1 p 2 0 ]
+[v i2fifoGet@get get `*.39uc  1 p 2 2 ]
+"94
+} 0

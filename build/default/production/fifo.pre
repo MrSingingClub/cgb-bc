@@ -1,0 +1,138 @@
+
+# 1 "fifo.c"
+
+# 18 "fifo.h"
+typedef struct
+{
+unsigned char* buf;
+unsigned char maxPtr;
+unsigned char status;
+unsigned char putPtr;
+unsigned char getPtr;
+} fifoType;
+
+void fifoInit(fifoType* fifo,unsigned char* buf,unsigned char size);
+char fifoPut(fifoType* fifobuf,unsigned char put);
+char fifoPutStr(fifoType* fifo,unsigned char* str);
+char fifoPutStr0(fifoType* fifo,char* str);
+char fifoPutBuf(fifoType* fifo,char* buf,char size);
+char fifoGet(fifoType* fifoBuf,char* get);
+char fifoGetBuf(fifoType* fifoBuf,char* buf,char size);
+void fifoWipeBuffer(fifoType* fifiBuf);
+
+# 3 "fifo.c"
+void fifoInit(fifoType* fifo,unsigned char* buf,unsigned char size)
+{
+fifo->buf=buf;
+fifo->maxPtr=size-1;
+fifo->status=2;
+fifo->getPtr=fifo->maxPtr;
+fifo->putPtr=fifo->maxPtr;
+}
+
+char fifoPut(fifoType* fifo,char put)
+{
+if ((fifo->status & 1)==1)
+{
+return 0;
+}
+
+fifo->buf[fifo->putPtr]=put;
+fifo->status&=~2;
+
+fifo->putPtr--;
+if (fifo->putPtr > fifo->maxPtr)
+{
+fifo->putPtr=fifo->maxPtr;
+}
+
+if (fifo->putPtr==fifo->getPtr)
+{
+fifo->status|=1;
+}
+return 1;
+}
+
+char fifoPutStr(fifoType* fifo,char* str)
+{
+while (*str)
+{
+if (fifoPut(fifo,*str)==0)
+{
+return 0;
+}
+str++;
+}
+return 0;
+}
+char fifoPutStr0(fifoType* fifo,char* str)
+{
+do
+{
+if (fifoPut(fifo,*str)==0)
+{
+return 0;
+}
+}
+while (*str++);
+return 0;
+}
+
+char fifoPutBuf(fifoType* fifo,char* buf,char size)
+{
+while (size)
+{
+if (fifoPut(fifo,*buf)==0)
+{
+return 0;
+}
+buf++;
+size--;
+}
+return 0;
+}
+
+char fifoGet(fifoType* fifo,char* get)
+{
+if ((fifo->status & 2)==2)
+{
+return 0;
+}
+*get=fifo->buf[fifo->getPtr];
+fifo->status&=~1;
+
+fifo->getPtr--;
+if (fifo->getPtr > fifo->maxPtr)
+{
+fifo->getPtr=fifo->maxPtr;
+}
+
+if (fifo->getPtr==fifo->putPtr)
+{
+fifo->status|=2;
+}
+return 1;
+}
+
+char fifoGetBuf(fifoType* fifo,char* buf,char size)
+{
+char elem;
+char copied=0;
+if ((fifo->status & 2)==2)
+{
+return 0;
+}
+while (fifoGet(fifo,&elem) && (size-->0))
+{
+*buf++=elem;
+copied++;
+}
+return copied;
+}
+
+void fifoWipeBuffer(fifoType* fifoBuf)
+{
+fifoBuf->getPtr=fifoBuf->putPtr;
+fifoBuf->status=2;
+}
+
