@@ -63,12 +63,15 @@
 #define ERR_PCKINCMPL (0xC1)
 #define ERR_CRCFAIL (0xC2)
 
-unsigned char uartSendBuffer[132];
-unsigned char uartRecvBuffer[132];
-char packetRecvBuffer[132];
-char packetSendBuffer[132];
-char spiRecvBuffer[106];
-char spiSendBuffer[106];
+#define MAXBUF8LEN (105)
+#define NULLBYTE (0)
+
+unsigned char uartSendBuffer[132]; // fifo puffer zum datagramm senden per UART
+unsigned char uartRecvBuffer[132]; // fifo puffer für vom UART empfangene Bytes
+char packetRecvBuffer[127];  // datagramm puffer für empfangenes datagramm 7bit codieren
+char packetSendBuffer[127]; // datagramm puffer für zu versendendes datagramm 7bit codieren
+char spiRecvBuffer[MAXBUF8LEN];    // 8-bit Empfangspuffer für AC
+char spiSendBuffer[MAXBUF8LEN];    // 8-bit Sendepuffer für AC
 
 ledType ledRx;
 ledType ledTx;
@@ -77,14 +80,22 @@ uartType uart;
 
 char adr;
 char mode;
-char packetReady;
 char dataAvailable;
+
+char spiReadWrite; // 1=read, 0=write
+char spiRecvLen;
+char spiRecvPtr;
+char spiSendPtr;
 
 char packetSendLen;
 
 char packetCtrl;
 char packetAddress;
 char packetRecvLen;
+
+char packetSendLen;
+char packetSendCrc;
+char packetSendEnable;
 
 void LoadConfigData(void)
 {
@@ -116,6 +127,8 @@ void InitSystem(void)
     RCONbits.IPEN = 0; //enable priority levels
     INTCONbits.PEIE = 1;
     INTCONbits.GIE = 1;
+    INTCONbits.RBIE = 1;
+    IOCB4=1; // ENable RB4 interrupt on change
     
     // set IO
     TRISAbits.RA0=0;
@@ -130,8 +143,10 @@ void InitSystem(void)
     ANSELAbits.ANSA3=0;
     ANSELAbits.ANSA5=0;
     
-    TRISBbits.RB4=0; // RS485 read/write
-    TRISBbits.RB5=0;
+    TRISBbits.RB2=0; // SPI Data Available
+    TRISBbits.RB3=1; // SPI RD/'WR bit 1=AC reads, 0=AC writes
+    TRISBbits.RB4=1; // SPI 'CS bit
+    
                 
     ledInit(&(ledRx),FLASH_COUNT,FLASH_COUNT,0b00000001);
     ledInit(&(ledTx),FLASH_COUNT,FLASH_COUNT,0b00000010);    
@@ -140,10 +155,105 @@ void InitSystem(void)
 void InitUart()
 {
     uartInit(&(uart),1,9600,64000000,uartSendBuffer,160,uartRecvBuffer,160);
-    uartInitHalfDuplex(&(uart),&LATB,5);
+    //uartInitHalfDuplex(&(uart),&LATB,5);
 
     uartEnableSend(&(uart),1);
     uartEnableRecv(&(uart),1);
+}
+
+void InitSPI()
+{
+    TRISAbits.RA5=1; // SPI SS
+    TRISCbits.RC5=0; //SDO
+    TRISCbits.RC4=1; //SDI
+    TRISCbits.RC3=1; //SCLK
+    SSP1STAT=0b01000000;
+    SSP1CON1=0b00100100;
+    
+}
+char crcOk(char crc)
+{
+    return 1;
+}
+
+char crcCalc()
+{
+    return 0;
+}
+
+char encodeSendBuffer() // returns number of encoded bytes
+{
+    
+}
+char decodeRecvBuffer() // returns number of decoed bytes
+{
+    
+}
+
+void spiInterruptHandler()
+{
+    if (RBIF) // SPI 'CS Flag
+    {    
+        if (PORTBbits.RB4==0) // got new CS Low
+        {
+            spiReadWrite=PORTBbits.RB3;
+            if (spiReadWrite) // AC wants to read, write byte to SPI
+            {
+                SSP1BUF=spiRecvBuffer[spiRecvPtr++]; // put first byte to SPI                
+                if (spiRecvPtr==spiRecvLen)
+                {
+                    LATB2=0;
+                }
+            }
+            else // AC wants to write, prepare buffer
+            {
+                spiSendPtr=0;
+                SSP1BUF=spiSendPtr;
+            }
+        }
+        if (PORTBbits.RB4==1) // CS is over
+        {
+            if (spiReadWrite) // AC has read
+            {
+                spiRecvPtr=0;
+                LATB2=0;
+            }
+            else // AC has written, prepare sending via UART
+            {
+                packetSendLen=encodeSendBuffer();    //packetReady>0 signal main routine to send            
+                packetSendCrc=crcCalc();
+                packetSendEnable=1;
+                spiSendPtr=0;
+            }            
+        }
+        RBIF=0;
+    }
+    
+    if (SSP1IF)
+    {
+        if (spiReadWrite) //AC reads
+        {
+            if (spiRecvPtr<spiRecvLen)
+            {
+                SSP1BUF=spiRecvBuffer[spiRecvPtr++];
+            }
+            if (spiRecvPtr==spiRecvLen)
+            {
+                LATB2=0; // no more data avaiable
+                spiRecvPtr=0;
+                spiRecvLen=0;
+            }            
+        }
+        else // AC writes
+        {
+            if (spiSendPtr<MAXBUF8LEN)
+            {
+                spiSendBuffer[spiSendPtr++]=SSP1BUF;
+                SSP1BUF=spiSendPtr;
+            }            
+        }
+        SSP1IF=0;
+    }
 }
 
 void interrupt high_priority IntHighRoutine()
@@ -151,7 +261,7 @@ void interrupt high_priority IntHighRoutine()
     INTCONbits.GIE=0;
  
     uartInterruptHandler(&(uart));
-
+    spiInterruptHandler();
     INTCONbits.GIE=1;
 }
 
@@ -165,21 +275,14 @@ void myDelay(long per)
     }
 }
 
-char crcOk(char crc)
+void setDataAvailable()
 {
-    return 1;
-}
-
-void decodeRecvBuffer()
-{
-    
+    LATB2=1;
 }
 
 void main(void)
 {     
     char b;
-    char newByte;
-    char nullByte=0;
     char pckRecvPtr=0;
     adr=-1;
     
@@ -215,11 +318,15 @@ void main(void)
         
         if (mode==STATE_WAITFORCTRL)
         {
-            if (packetReady) // check if something to send
+            if (packetSendEnable) // check if something to send
             {
-                uartSendBuf(&uart,packetRecvBuffer,packetReady);
+                uartSendByte(&uart,CTRL_DATATRANS);
+                uartSendByte(&uart,adr); //my address
+                uartSendByte(&uart,packetSendLen); // number of 
+                uartSendBuf(&uart,packetSendBuffer,packetSendLen);
+                uartSendByte(&uart,packetSendCrc);
                 mode=STATE_SEND;
-                packetReady=0;                   
+                packetSendEnable=0;                   
                 continue;
             }      
         }  
@@ -258,13 +365,13 @@ void main(void)
                 adr=packetAddress+1;                
                 uartSendByte(&uart,packetCtrl);
                 uartSendByte(&uart,adr);
-                uartSendByte(&uart,nullByte); // LEN
-                uartSendByte(&uart,nullByte); // CRC
+                uartSendByte(&uart,NULLBYTE); // LEN
+                uartSendByte(&uart,NULLBYTE); // CRC
                 mode=STATE_WAITFORCTRL;
                 continue;
             }
             
-            if (adr!=packetAddress) // packet for me
+            if (adr!=packetAddress) // packet not for me
             {                
                 uartSendByte(&uart,packetCtrl);
                 uartSendByte(&uart,packetAddress);
@@ -278,8 +385,8 @@ void main(void)
             {
                 uartSendByte(&uart,packetCtrl);
                 uartSendByte(&uart,adr);
-                uartSendByte(&uart,nullByte); // LEN
-                uartSendByte(&uart,nullByte); // CRC
+                uartSendByte(&uart,NULLBYTE); // LEN
+                uartSendByte(&uart,NULLBYTE); // CRC
                 mode=STATE_WAITFORCTRL;
                 continue;
             }
@@ -310,11 +417,12 @@ void main(void)
                 {
                     uartSendByte(&uart,packetCtrl);
                     uartSendByte(&uart,adr);
-                    uartSendByte(&uart,nullByte); // LEN
-                    uartSendByte(&uart,nullByte); // CRC
+                    uartSendByte(&uart,NULLBYTE); // LEN
+                    uartSendByte(&uart,NULLBYTE); // CRC
                 }
+                // Todo: Konflikt, wenn AC noch nicht gelesen hat
                 decodeRecvBuffer();
-                dataAvailable=1;
+                setDataAvailable();
             }
             mode=STATE_WAITFORCTRL;
             continue;                    

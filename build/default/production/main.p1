@@ -68,6 +68,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S792 . . . . ]
 "16125
 [v _INTCONbits `VS792 ~T0 @X0 0 e@4082 ]
+"17351
+[v _IOCB4 `Vb ~T0 @X0 0 e@31508 ]
 "7589
 [s S375 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S375 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
@@ -102,15 +104,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ledInit `(v ~T0 @X0 0 ef4`*S823`i`i`uc ]
 "40 uart.h
 [v _uartInit `(v ~T0 @X0 0 ef8`*S822`uc`l`l`*uc`uc`*uc`uc ]
-"43
-[v _uartInitHalfDuplex `(v ~T0 @X0 0 ef3`*S822`*Vuc`uc ]
-"7354 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f25k22.h
-[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
-"44 uart.h
+"44
 [v _uartEnableSend `(v ~T0 @X0 0 ef2`*S822`uc ]
 "45
 [v _uartEnableRecv `(v ~T0 @X0 0 ef2`*S822`uc ]
-"53
+"8033 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic18f25k22.h
+[s S387 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S387 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
+"8043
+[s S388 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S388 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+"8032
+[u S386 `S387 1 `S388 1 ]
+[n S386 . . . ]
+"8054
+[v _TRISCbits `VS386 ~T0 @X0 0 e@3988 ]
+"17829
+[v _RBIF `Vb ~T0 @X0 0 e@32656 ]
+"6469
+[s S337 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S337 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"6479
+[s S338 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S338 . INT0 INT1 INT2 CCP2 KBI0 KBI1 KBI2 KBI3 ]
+"6489
+[s S339 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S339 . AN12 AN10 AN8 AN9 AN11 AN13 TX2 RX2 ]
+"6499
+[s S340 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S340 . FLT0 C12IN3M P1B C12IN2M T5G T1G CK2 DT2 ]
+"6509
+[s S341 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S341 . SRI C12IN3N CTED1 C12IN2N P1D CCP3 PGC PGD ]
+"6519
+[s S342 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S342 . CCP4 P1C SDA2 CTED2 . T3CKI ]
+"6527
+[s S343 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S343 . SS2 SCL2 SDI2 P2A . P3A ]
+"6535
+[s S344 :1 `uc 1 ]
+[n S344 . NOT_SS2 ]
+"6538
+[s S345 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S345 . nSS2 SCK2 . SDO2 . P2B ]
+"6546
+[s S346 :3 `uc 1 :1 `uc 1 ]
+[n S346 . . CCP2_PA2 ]
+"6468
+[u S336 `S337 1 `S338 1 `S339 1 `S340 1 `S341 1 `S342 1 `S343 1 `S344 1 `S345 1 `S346 1 ]
+[n S336 . . . . . . . . . . . ]
+"6551
+[v _PORTBbits `VS336 ~T0 @X0 0 e@3969 ]
+"14426
+[v _SSP1BUF `Vuc ~T0 @X0 0 e@4041 ]
+"17433
+[v _LATB2 `Vb ~T0 @X0 0 e@31826 ]
+"18085
+[v _SSP1IF `Vb ~T0 @X0 0 e@31987 ]
+"53 uart.h
 [v _uartInterruptHandler `(v ~T0 @X0 0 ef1`*S822 ]
 [p mainexit ]
 "28 blink.h
@@ -119,12 +171,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ledOff `(v ~T0 @X0 0 ef1`*S823 ]
 "32
 [v _ledFlash `(v ~T0 @X0 0 ef1`*S823 ]
-"50 uart.h
+"47 uart.h
+[v _uartSendByte `(uc ~T0 @X0 0 ef2`*S822`uc ]
+"50
 [v _uartSendBuf `(uc ~T0 @X0 0 ef3`*S822`*uc`uc ]
 "51
 [v _uartRecvByte `(uc ~T0 @X0 0 ef2`*S822`*uc ]
-"47
-[v _uartSendByte `(uc ~T0 @X0 0 ef2`*S822`uc ]
 "33 blink.h
 [v _ledTact `(v ~T0 @X0 0 ef1`*S823 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -6657,730 +6709,1030 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-"66 main.c
+"68 main.c
 [v _uartSendBuffer `uc ~T0 @X0 -> 132 `i e ]
-[; ;main.c: 66: unsigned char uartSendBuffer[132];
-"67
-[v _uartRecvBuffer `uc ~T0 @X0 -> 132 `i e ]
-[; ;main.c: 67: unsigned char uartRecvBuffer[132];
-"68
-[v _packetRecvBuffer `uc ~T0 @X0 -> 132 `i e ]
-[; ;main.c: 68: char packetRecvBuffer[132];
+[; ;main.c: 68: unsigned char uartSendBuffer[132];
 "69
-[v _packetSendBuffer `uc ~T0 @X0 -> 132 `i e ]
-[; ;main.c: 69: char packetSendBuffer[132];
+[v _uartRecvBuffer `uc ~T0 @X0 -> 132 `i e ]
+[; ;main.c: 69: unsigned char uartRecvBuffer[132];
 "70
-[v _spiRecvBuffer `uc ~T0 @X0 -> 106 `i e ]
-[; ;main.c: 70: char spiRecvBuffer[106];
+[v _packetRecvBuffer `uc ~T0 @X0 -> 127 `i e ]
+[; ;main.c: 70: char packetRecvBuffer[127];
 "71
-[v _spiSendBuffer `uc ~T0 @X0 -> 106 `i e ]
-[; ;main.c: 71: char spiSendBuffer[106];
+[v _packetSendBuffer `uc ~T0 @X0 -> 127 `i e ]
+[; ;main.c: 71: char packetSendBuffer[127];
+"72
+[v _spiRecvBuffer `uc ~T0 @X0 -> 106 `i e ]
+[; ;main.c: 72: char spiRecvBuffer[106];
 "73
+[v _spiSendBuffer `uc ~T0 @X0 -> 106 `i e ]
+[; ;main.c: 73: char spiSendBuffer[106];
+"75
 [v _ledRx `S823 ~T0 @X0 1 e ]
-[; ;main.c: 73: ledType ledRx;
-"74
-[v _ledTx `S823 ~T0 @X0 1 e ]
-[; ;main.c: 74: ledType ledTx;
+[; ;main.c: 75: ledType ledRx;
 "76
-[v _uart `S822 ~T0 @X0 1 e ]
-[; ;main.c: 76: uartType uart;
+[v _ledTx `S823 ~T0 @X0 1 e ]
+[; ;main.c: 76: ledType ledTx;
 "78
-[v _adr `uc ~T0 @X0 1 e ]
-[; ;main.c: 78: char adr;
-"79
-[v _mode `uc ~T0 @X0 1 e ]
-[; ;main.c: 79: char mode;
+[v _uart `S822 ~T0 @X0 1 e ]
+[; ;main.c: 78: uartType uart;
 "80
-[v _packetReady `uc ~T0 @X0 1 e ]
-[; ;main.c: 80: char packetReady;
+[v _adr `uc ~T0 @X0 1 e ]
+[; ;main.c: 80: char adr;
 "81
+[v _mode `uc ~T0 @X0 1 e ]
+[; ;main.c: 81: char mode;
+"82
 [v _dataAvailable `uc ~T0 @X0 1 e ]
-[; ;main.c: 81: char dataAvailable;
-"83
-[v _packetSendLen `uc ~T0 @X0 1 e ]
-[; ;main.c: 83: char packetSendLen;
+[; ;main.c: 82: char dataAvailable;
+"84
+[v _spiReadWrite `uc ~T0 @X0 1 e ]
+[; ;main.c: 84: char spiReadWrite;
 "85
-[v _packetCtrl `uc ~T0 @X0 1 e ]
-[; ;main.c: 85: char packetCtrl;
+[v _spiRecvLen `uc ~T0 @X0 1 e ]
+[; ;main.c: 85: char spiRecvLen;
 "86
-[v _packetAddress `uc ~T0 @X0 1 e ]
-[; ;main.c: 86: char packetAddress;
+[v _spiRecvPtr `uc ~T0 @X0 1 e ]
+[; ;main.c: 86: char spiRecvPtr;
 "87
-[v _packetRecvLen `uc ~T0 @X0 1 e ]
-[; ;main.c: 87: char packetRecvLen;
+[v _spiSendPtr `uc ~T0 @X0 1 e ]
+[; ;main.c: 87: char spiSendPtr;
 "89
+[v _packetSendLen `uc ~T0 @X0 1 e ]
+[; ;main.c: 89: char packetSendLen;
+"91
+[v _packetCtrl `uc ~T0 @X0 1 e ]
+[; ;main.c: 91: char packetCtrl;
+"92
+[v _packetAddress `uc ~T0 @X0 1 e ]
+[; ;main.c: 92: char packetAddress;
+"93
+[v _packetRecvLen `uc ~T0 @X0 1 e ]
+[; ;main.c: 93: char packetRecvLen;
+[; ;main.c: 95: char packetSendLen;
+"96
+[v _packetSendCrc `uc ~T0 @X0 1 e ]
+[; ;main.c: 96: char packetSendCrc;
+"97
+[v _packetSendEnable `uc ~T0 @X0 1 e ]
+[; ;main.c: 97: char packetSendEnable;
+"99
 [v _LoadConfigData `(v ~T0 @X0 1 ef ]
-"90
+"100
 {
-[; ;main.c: 89: void LoadConfigData(void)
-[; ;main.c: 90: {
+[; ;main.c: 99: void LoadConfigData(void)
+[; ;main.c: 100: {
 [e :U _LoadConfigData ]
 [f ]
-[; ;main.c: 91: adr=EERead((0));
-"91
+[; ;main.c: 101: adr=EERead((0));
+"101
 [e = _adr ( _EERead (1 -> -> 0 `i `uc ]
-[; ;main.c: 92: }
-"92
+[; ;main.c: 102: }
+"102
 [e :UE 829 ]
 }
-"94
+"104
 [v _SaveConfigData `(v ~T0 @X0 1 ef ]
-"95
+"105
 {
-[; ;main.c: 94: void SaveConfigData()
-[; ;main.c: 95: {
+[; ;main.c: 104: void SaveConfigData()
+[; ;main.c: 105: {
 [e :U _SaveConfigData ]
 [f ]
-[; ;main.c: 96: if (adr) EEWrite((0),adr);
-"96
+[; ;main.c: 106: if (adr) EEWrite((0),adr);
+"106
 [e $ ! != -> _adr `i -> -> -> 0 `i `uc `i 831  ]
 [e ( _EEWrite (2 , -> -> 0 `i `uc _adr ]
 [e :U 831 ]
-[; ;main.c: 97: }
-"97
+[; ;main.c: 107: }
+"107
 [e :UE 830 ]
 }
-"99
+"109
 [v _InitSystem `(v ~T0 @X0 1 ef ]
-"100
+"110
 {
-[; ;main.c: 99: void InitSystem(void)
-[; ;main.c: 100: {
+[; ;main.c: 109: void InitSystem(void)
+[; ;main.c: 110: {
 [e :U _InitSystem ]
 [f ]
-[; ;main.c: 102: SetupInternalOscillator((0b00111),(0b1));
-"102
-[e ( _SetupInternalOscillator (2 , -> -> 7 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 105: LoadConfigData();
-"105
-[e ( _LoadConfigData ..  ]
-[; ;main.c: 108: INTCON=0;
-"108
-[e = _INTCON -> -> 0 `i `uc ]
-[; ;main.c: 109: INTCON3=0;
-"109
-[e = _INTCON3 -> -> 0 `i `uc ]
-[; ;main.c: 110: PIE1=0;
-"110
-[e = _PIE1 -> -> 0 `i `uc ]
-[; ;main.c: 111: PIE2=0;
-"111
-[e = _PIE2 -> -> 0 `i `uc ]
-[; ;main.c: 112: PIE3=0;
+[; ;main.c: 112: SetupInternalOscillator((0b00111),(0b1));
 "112
-[e = _PIE3 -> -> 0 `i `uc ]
-[; ;main.c: 113: PIE4=0;
-"113
-[e = _PIE4 -> -> 0 `i `uc ]
-[; ;main.c: 114: PIE5=0;
-"114
-[e = _PIE5 -> -> 0 `i `uc ]
-[; ;main.c: 116: RCONbits.IPEN = 0;
-"116
-[e = . . _RCONbits 5 7 -> -> 0 `i `uc ]
-[; ;main.c: 117: INTCONbits.PEIE = 1;
-"117
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;main.c: 118: INTCONbits.GIE = 1;
+[e ( _SetupInternalOscillator (2 , -> -> 7 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 115: LoadConfigData();
+"115
+[e ( _LoadConfigData ..  ]
+[; ;main.c: 118: INTCON=0;
 "118
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 121: TRISAbits.RA0=0;
+[e = _INTCON -> -> 0 `i `uc ]
+[; ;main.c: 119: INTCON3=0;
+"119
+[e = _INTCON3 -> -> 0 `i `uc ]
+[; ;main.c: 120: PIE1=0;
+"120
+[e = _PIE1 -> -> 0 `i `uc ]
+[; ;main.c: 121: PIE2=0;
 "121
-[e = . . _TRISAbits 1 0 -> -> 0 `i `uc ]
-[; ;main.c: 122: TRISAbits.RA1=0;
+[e = _PIE2 -> -> 0 `i `uc ]
+[; ;main.c: 122: PIE3=0;
 "122
-[e = . . _TRISAbits 1 1 -> -> 0 `i `uc ]
-[; ;main.c: 123: TRISAbits.RA2=0;
+[e = _PIE3 -> -> 0 `i `uc ]
+[; ;main.c: 123: PIE4=0;
 "123
-[e = . . _TRISAbits 1 2 -> -> 0 `i `uc ]
-[; ;main.c: 124: TRISAbits.RA3=0;
+[e = _PIE4 -> -> 0 `i `uc ]
+[; ;main.c: 124: PIE5=0;
 "124
-[e = . . _TRISAbits 1 3 -> -> 0 `i `uc ]
-[; ;main.c: 125: TRISAbits.RA4=0;
-"125
-[e = . . _TRISAbits 1 4 -> -> 0 `i `uc ]
-[; ;main.c: 126: TRISAbits.RA5=0;
+[e = _PIE5 -> -> 0 `i `uc ]
+[; ;main.c: 126: RCONbits.IPEN = 0;
 "126
-[e = . . _TRISAbits 1 5 -> -> 0 `i `uc ]
-[; ;main.c: 127: ANSELAbits.ANSA0=0;
+[e = . . _RCONbits 5 7 -> -> 0 `i `uc ]
+[; ;main.c: 127: INTCONbits.PEIE = 1;
 "127
-[e = . . _ANSELAbits 0 0 -> -> 0 `i `uc ]
-[; ;main.c: 128: ANSELAbits.ANSA1=0;
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;main.c: 128: INTCONbits.GIE = 1;
 "128
-[e = . . _ANSELAbits 0 1 -> -> 0 `i `uc ]
-[; ;main.c: 129: ANSELAbits.ANSA2=0;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 129: INTCONbits.RBIE = 1;
 "129
-[e = . . _ANSELAbits 0 2 -> -> 0 `i `uc ]
-[; ;main.c: 130: ANSELAbits.ANSA3=0;
+[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 130: IOCB4=1;
 "130
-[e = . . _ANSELAbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 131: ANSELAbits.ANSA5=0;
-"131
-[e = . . _ANSELAbits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 133: TRISBbits.RB4=0;
+[e = _IOCB4 -> -> 1 `i `b ]
+[; ;main.c: 133: TRISAbits.RA0=0;
 "133
-[e = . . _TRISBbits 1 4 -> -> 0 `i `uc ]
-[; ;main.c: 134: TRISBbits.RB5=0;
+[e = . . _TRISAbits 1 0 -> -> 0 `i `uc ]
+[; ;main.c: 134: TRISAbits.RA1=0;
 "134
-[e = . . _TRISBbits 1 5 -> -> 0 `i `uc ]
-[; ;main.c: 136: ledInit(&(ledRx),(5),(5),0b00000001);
+[e = . . _TRISAbits 1 1 -> -> 0 `i `uc ]
+[; ;main.c: 135: TRISAbits.RA2=0;
+"135
+[e = . . _TRISAbits 1 2 -> -> 0 `i `uc ]
+[; ;main.c: 136: TRISAbits.RA3=0;
 "136
-[e ( _ledInit (4 , , , &U _ledRx -> 5 `i -> 5 `i -> -> 1 `i `uc ]
-[; ;main.c: 137: ledInit(&(ledTx),(5),(5),0b00000010);
+[e = . . _TRISAbits 1 3 -> -> 0 `i `uc ]
+[; ;main.c: 137: TRISAbits.RA4=0;
 "137
-[e ( _ledInit (4 , , , &U _ledTx -> 5 `i -> 5 `i -> -> 2 `i `uc ]
-[; ;main.c: 138: }
+[e = . . _TRISAbits 1 4 -> -> 0 `i `uc ]
+[; ;main.c: 138: TRISAbits.RA5=0;
 "138
+[e = . . _TRISAbits 1 5 -> -> 0 `i `uc ]
+[; ;main.c: 139: ANSELAbits.ANSA0=0;
+"139
+[e = . . _ANSELAbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 140: ANSELAbits.ANSA1=0;
+"140
+[e = . . _ANSELAbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 141: ANSELAbits.ANSA2=0;
+"141
+[e = . . _ANSELAbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 142: ANSELAbits.ANSA3=0;
+"142
+[e = . . _ANSELAbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 143: ANSELAbits.ANSA5=0;
+"143
+[e = . . _ANSELAbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 145: TRISBbits.RB2=0;
+"145
+[e = . . _TRISBbits 1 2 -> -> 0 `i `uc ]
+[; ;main.c: 146: TRISBbits.RB3=1;
+"146
+[e = . . _TRISBbits 1 3 -> -> 1 `i `uc ]
+[; ;main.c: 147: TRISBbits.RB4=1;
+"147
+[e = . . _TRISBbits 1 4 -> -> 1 `i `uc ]
+[; ;main.c: 150: ledInit(&(ledRx),(5),(5),0b00000001);
+"150
+[e ( _ledInit (4 , , , &U _ledRx -> 5 `i -> 5 `i -> -> 1 `i `uc ]
+[; ;main.c: 151: ledInit(&(ledTx),(5),(5),0b00000010);
+"151
+[e ( _ledInit (4 , , , &U _ledTx -> 5 `i -> 5 `i -> -> 2 `i `uc ]
+[; ;main.c: 152: }
+"152
 [e :UE 832 ]
 }
-"140
+"154
 [v _InitUart `(v ~T0 @X0 1 ef ]
-"141
+"155
 {
-[; ;main.c: 140: void InitUart()
-[; ;main.c: 141: {
+[; ;main.c: 154: void InitUart()
+[; ;main.c: 155: {
 [e :U _InitUart ]
 [f ]
-[; ;main.c: 142: uartInit(&(uart),1,9600,64000000,uartSendBuffer,160,uartRecvBuffer,160);
-"142
+[; ;main.c: 156: uartInit(&(uart),1,9600,64000000,uartSendBuffer,160,uartRecvBuffer,160);
+"156
 [e ( _uartInit (4 , , , , , , , &U _uart -> -> 1 `i `uc -> -> 9600 `i `l -> 64000000 `l &U _uartSendBuffer -> -> 160 `i `uc &U _uartRecvBuffer -> -> 160 `i `uc ]
-[; ;main.c: 143: uartInitHalfDuplex(&(uart),&LATB,5);
-"143
-[e ( _uartInitHalfDuplex (3 , , &U _uart &U _LATB -> -> 5 `i `uc ]
-[; ;main.c: 145: uartEnableSend(&(uart),1);
-"145
+[; ;main.c: 159: uartEnableSend(&(uart),1);
+"159
 [e ( _uartEnableSend (2 , &U _uart -> -> 1 `i `uc ]
-[; ;main.c: 146: uartEnableRecv(&(uart),1);
-"146
+[; ;main.c: 160: uartEnableRecv(&(uart),1);
+"160
 [e ( _uartEnableRecv (2 , &U _uart -> -> 1 `i `uc ]
-[; ;main.c: 147: }
-"147
+[; ;main.c: 161: }
+"161
 [e :UE 833 ]
 }
-[v $root$_IntHighRoutine `(v ~T0 @X0 0 e ]
-[v F7065 `(v ~T0 @X0 1 tf ]
-"149
-[v _IntHighRoutine `IHF7065 ~T0 @X0 1 e ]
-"150
+"163
+[v _InitSPI `(v ~T0 @X0 1 ef ]
+"164
 {
-[; ;main.c: 149: void interrupt high_priority IntHighRoutine()
-[; ;main.c: 150: {
-[e :U _IntHighRoutine ]
+[; ;main.c: 163: void InitSPI()
+[; ;main.c: 164: {
+[e :U _InitSPI ]
 [f ]
-[; ;main.c: 151: INTCONbits.GIE=0;
-"151
-[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;main.c: 153: uartInterruptHandler(&(uart));
-"153
-[e ( _uartInterruptHandler (1 &U _uart ]
-[; ;main.c: 155: INTCONbits.GIE=1;
-"155
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;main.c: 156: }
-"156
+[; ;main.c: 165: TRISAbits.RA5=1;
+"165
+[e = . . _TRISAbits 1 5 -> -> 1 `i `uc ]
+[; ;main.c: 166: TRISCbits.RC5=0;
+"166
+[e = . . _TRISCbits 1 5 -> -> 0 `i `uc ]
+[; ;main.c: 167: TRISCbits.RC4=1;
+"167
+[e = . . _TRISCbits 1 4 -> -> 1 `i `uc ]
+[; ;main.c: 168: TRISCbits.RC3=1;
+"168
+[e = . . _TRISCbits 1 3 -> -> 1 `i `uc ]
+[; ;main.c: 170: }
+"170
 [e :UE 834 ]
 }
-"158
-[v _myDelay `(v ~T0 @X0 1 ef1`l ]
-"159
+"171
+[v _crcOk `(uc ~T0 @X0 1 ef1`uc ]
+"172
 {
-[; ;main.c: 158: void myDelay(long per)
-[; ;main.c: 159: {
-[e :U _myDelay ]
-"158
-[v _per `l ~T0 @X0 1 r1 ]
-"159
+[; ;main.c: 171: char crcOk(char crc)
+[; ;main.c: 172: {
+[e :U _crcOk ]
+"171
+[v _crc `uc ~T0 @X0 1 r1 ]
+"172
 [f ]
-"160
-[v _i `i ~T0 @X0 1 a ]
-[; ;main.c: 160: int i;
-[; ;main.c: 161: while (per--!=0)
-"161
-[e $U 836  ]
-[e :U 837 ]
-[; ;main.c: 162: {
-"162
-{
-[; ;main.c: 163: i=16000000/4000;
-"163
-[e = _i -> / -> 16000000 `l -> -> 4000 `i `l `i ]
-[; ;main.c: 164: while (i--!=0) {}
-"164
-[e $U 839  ]
-[e :U 840 ]
-{
-}
-[e :U 839 ]
-[e $ != -- _i -> 1 `i -> 0 `i 840  ]
-[e :U 841 ]
-"165
-}
-[e :U 836 ]
-"161
-[e $ != -- _per -> -> 1 `i `l -> -> 0 `i `l 837  ]
-[e :U 838 ]
-[; ;main.c: 165: }
-[; ;main.c: 166: }
-"166
+[; ;main.c: 173: return 1;
+"173
+[e ) -> -> 1 `i `uc ]
+[e $UE 835  ]
+[; ;main.c: 174: }
+"174
 [e :UE 835 ]
 }
-"168
-[v _crcOk `(uc ~T0 @X0 1 ef1`uc ]
-"169
+"176
+[v _crcCalc `(uc ~T0 @X0 1 ef ]
+"177
 {
-[; ;main.c: 168: char crcOk(char crc)
-[; ;main.c: 169: {
-[e :U _crcOk ]
-"168
-[v _crc `uc ~T0 @X0 1 r1 ]
-"169
+[; ;main.c: 176: char crcCalc()
+[; ;main.c: 177: {
+[e :U _crcCalc ]
 [f ]
-[; ;main.c: 170: return 1;
-"170
-[e ) -> -> 1 `i `uc ]
-[e $UE 842  ]
-[; ;main.c: 171: }
-"171
-[e :UE 842 ]
+[; ;main.c: 178: return 0;
+"178
+[e ) -> -> 0 `i `uc ]
+[e $UE 836  ]
+[; ;main.c: 179: }
+"179
+[e :UE 836 ]
 }
-"173
-[v _decodeRecvBuffer `(v ~T0 @X0 1 ef ]
-"174
+"181
+[v _encodeSendBuffer `(uc ~T0 @X0 1 ef ]
+"182
 {
-[; ;main.c: 173: void decodeRecvBuffer()
-[; ;main.c: 174: {
+[; ;main.c: 181: char encodeSendBuffer()
+[; ;main.c: 182: {
+[e :U _encodeSendBuffer ]
+[f ]
+[; ;main.c: 184: }
+"184
+[e :UE 837 ]
+}
+"185
+[v _decodeRecvBuffer `(uc ~T0 @X0 1 ef ]
+"186
+{
+[; ;main.c: 185: char decodeRecvBuffer()
+[; ;main.c: 186: {
 [e :U _decodeRecvBuffer ]
 [f ]
-[; ;main.c: 176: }
-"176
-[e :UE 843 ]
-}
-[v $root$_main `(v ~T0 @X0 0 e ]
-"178
-[v _main `(v ~T0 @X0 1 ef ]
-"179
-{
-[; ;main.c: 178: void main(void)
-[; ;main.c: 179: {
-[e :U _main ]
-[f ]
-"180
-[v _b `uc ~T0 @X0 1 a ]
-"181
-[v _newByte `uc ~T0 @X0 1 a ]
-"182
-[v _nullByte `uc ~T0 @X0 1 a ]
-[; ;main.c: 180: char b;
-[; ;main.c: 181: char newByte;
-[; ;main.c: 182: char nullByte=0;
-[e = _nullByte -> -> 0 `i `uc ]
-"183
-[v _pckRecvPtr `uc ~T0 @X0 1 a ]
-[; ;main.c: 183: char pckRecvPtr=0;
-[e = _pckRecvPtr -> -> 0 `i `uc ]
-[; ;main.c: 184: adr=-1;
-"184
-[e = _adr -> -U -> 1 `i `uc ]
-[; ;main.c: 186: InitSystem();
-"186
-[e ( _InitSystem ..  ]
-[; ;main.c: 188: ledOn(&ledRx);
+[; ;main.c: 188: }
 "188
-[e ( _ledOn (1 &U _ledRx ]
-[; ;main.c: 189: ledOn(&ledTx);
-"189
-[e ( _ledOn (1 &U _ledTx ]
-[; ;main.c: 191: InitUart();
+[e :UE 838 ]
+}
+"190
+[v _spiInterruptHandler `(v ~T0 @X0 1 ef ]
 "191
-[e ( _InitUart ..  ]
-[; ;main.c: 192: myDelay(500);
+{
+[; ;main.c: 190: void spiInterruptHandler()
+[; ;main.c: 191: {
+[e :U _spiInterruptHandler ]
+[f ]
+[; ;main.c: 192: if (RBIF)
 "192
-[e ( _myDelay (1 -> -> 500 `i `l ]
-[; ;main.c: 194: ledOff(&ledRx);
+[e $ ! _RBIF 840  ]
+[; ;main.c: 193: {
+"193
+{
+[; ;main.c: 194: if (PORTBbits.RB4==0)
 "194
-[e ( _ledOff (1 &U _ledRx ]
-[; ;main.c: 195: ledOff(&ledTx);
+[e $ ! == -> . . _PORTBbits 0 4 `i -> 0 `i 841  ]
+[; ;main.c: 195: {
 "195
-[e ( _ledOff (1 &U _ledTx ]
-[; ;main.c: 197: mode=(2);
+{
+[; ;main.c: 196: spiReadWrite=PORTBbits.RB3;
+"196
+[e = _spiReadWrite . . _PORTBbits 0 3 ]
+[; ;main.c: 197: if (spiReadWrite)
 "197
-[e = _mode -> -> 2 `i `uc ]
-[; ;main.c: 198: packetAddress=-1;
+[e $ ! != -> _spiReadWrite `i -> -> -> 0 `i `uc `i 842  ]
+[; ;main.c: 198: {
 "198
-[e = _packetAddress -> -U -> 1 `i `uc ]
-[; ;main.c: 199: packetRecvLen=-1;
+{
+[; ;main.c: 199: SSP1BUF=spiRecvBuffer[spiRecvPtr++];
 "199
-[e = _packetRecvLen -> -U -> 1 `i `uc ]
-[; ;main.c: 201: while (1)
+[e = _SSP1BUF *U + &U _spiRecvBuffer * -> ++ _spiRecvPtr -> -> 1 `i `uc `ux -> -> # *U &U _spiRecvBuffer `ui `ux ]
+[; ;main.c: 200: if (spiRecvPtr==spiRecvLen)
+"200
+[e $ ! == -> _spiRecvPtr `i -> _spiRecvLen `i 843  ]
+[; ;main.c: 201: {
 "201
-[e :U 846 ]
-[; ;main.c: 202: {
+{
+[; ;main.c: 202: LATB2=0;
 "202
-{
-[; ;main.c: 203: if (mode==(1))
+[e = _LATB2 -> -> 0 `i `b ]
 "203
-[e $ ! == -> _mode `i -> 1 `i 848  ]
-[; ;main.c: 204: {
+}
+[e :U 843 ]
 "204
-{
-[; ;main.c: 205: if (uart.status & 2)
+}
+[; ;main.c: 203: }
+[; ;main.c: 204: }
+[e $U 844  ]
 "205
-[e $ ! != & -> . _uart 6 `i -> 2 `i -> 0 `i 849  ]
+[e :U 842 ]
+[; ;main.c: 205: else
 [; ;main.c: 206: {
 "206
 {
-[; ;main.c: 207: mode=(2);
+[; ;main.c: 207: spiSendPtr=0;
 "207
-[e = _mode -> -> 2 `i `uc ]
+[e = _spiSendPtr -> -> 0 `i `uc ]
+[; ;main.c: 208: SSP1BUF=spiSendPtr;
 "208
-}
-[; ;main.c: 208: }
-[e $U 850  ]
+[e = _SSP1BUF _spiSendPtr ]
 "209
-[e :U 849 ]
-[; ;main.c: 209: else
-[; ;main.c: 210: {
+}
+[e :U 844 ]
 "210
-{
-[; ;main.c: 211: ledFlash(&ledTx);
+}
+[e :U 841 ]
+[; ;main.c: 209: }
+[; ;main.c: 210: }
+[; ;main.c: 211: if (PORTBbits.RB4==1)
 "211
-[e ( _ledFlash (1 &U _ledTx ]
-[; ;main.c: 212: continue;
+[e $ ! == -> . . _PORTBbits 0 4 `i -> 1 `i 845  ]
+[; ;main.c: 212: {
 "212
-[e $U 845  ]
+{
+[; ;main.c: 213: if (spiReadWrite)
 "213
-}
-[e :U 850 ]
+[e $ ! != -> _spiReadWrite `i -> -> -> 0 `i `uc `i 846  ]
+[; ;main.c: 214: {
 "214
-}
-[e :U 848 ]
-[; ;main.c: 213: }
-[; ;main.c: 214: }
-[; ;main.c: 216: if (mode==(2))
+{
 "216
-[e $ ! == -> _mode `i -> 2 `i 851  ]
-[; ;main.c: 217: {
+}
+[; ;main.c: 216: }
+[e $U 847  ]
 "217
-{
-[; ;main.c: 218: if (packetReady)
+[e :U 846 ]
+[; ;main.c: 217: else
+[; ;main.c: 218: {
 "218
-[e $ ! != -> _packetReady `i -> -> -> 0 `i `uc `i 852  ]
-[; ;main.c: 219: {
-"219
 {
-[; ;main.c: 220: uartSendBuf(&uart,packetRecvBuffer,packetReady);
+[; ;main.c: 219: packetSendLen=encodeSendBuffer();
+"219
+[e = _packetSendLen ( _encodeSendBuffer ..  ]
+[; ;main.c: 220: packetSendCrc=crcCalc();
 "220
-[e ( _uartSendBuf (3 , , &U _uart &U _packetRecvBuffer _packetReady ]
-[; ;main.c: 221: mode=(1);
+[e = _packetSendCrc ( _crcCalc ..  ]
+[; ;main.c: 221: packetSendEnable=1;
 "221
-[e = _mode -> -> 1 `i `uc ]
-[; ;main.c: 222: packetReady=0;
+[e = _packetSendEnable -> -> 1 `i `uc ]
+[; ;main.c: 222: spiSendPtr=0;
 "222
-[e = _packetReady -> -> 0 `i `uc ]
-[; ;main.c: 223: continue;
+[e = _spiSendPtr -> -> 0 `i `uc ]
 "223
-[e $U 845  ]
+}
+[e :U 847 ]
 "224
 }
-[e :U 852 ]
-"225
-}
-[e :U 851 ]
+[e :U 845 ]
+[; ;main.c: 223: }
 [; ;main.c: 224: }
-[; ;main.c: 225: }
-[; ;main.c: 227: if (!uartRecvByte(&uart,b))
-"227
-[e $ ! ! != -> ( _uartRecvByte (2 , &U _uart -> _b `*uc `i -> -> -> 0 `i `uc `i 853  ]
-[; ;main.c: 228: continue;
+[; ;main.c: 225: RBIF=0;
+"225
+[e = _RBIF -> -> 0 `i `b ]
+"226
+}
+[e :U 840 ]
+[; ;main.c: 226: }
+[; ;main.c: 228: if (SSP1IF)
 "228
-[e $U 845  ]
-[e :U 853 ]
-[; ;main.c: 230: ledFlash(&ledRx);
+[e $ ! _SSP1IF 848  ]
+[; ;main.c: 229: {
+"229
+{
+[; ;main.c: 230: if (spiReadWrite)
 "230
-[e ( _ledFlash (1 &U _ledRx ]
-[; ;main.c: 232: if (b & 128)
+[e $ ! != -> _spiReadWrite `i -> -> -> 0 `i `uc `i 849  ]
+[; ;main.c: 231: {
+"231
+{
+[; ;main.c: 232: if (spiRecvPtr<spiRecvLen)
 "232
-[e $ ! != & -> _b `i -> 128 `i -> 0 `i 854  ]
+[e $ ! < -> _spiRecvPtr `i -> _spiRecvLen `i 850  ]
 [; ;main.c: 233: {
 "233
 {
-[; ;main.c: 235: packetCtrl=b;
+[; ;main.c: 234: SSP1BUF=spiRecvBuffer[spiRecvPtr++];
+"234
+[e = _SSP1BUF *U + &U _spiRecvBuffer * -> ++ _spiRecvPtr -> -> 1 `i `uc `ux -> -> # *U &U _spiRecvBuffer `ui `ux ]
 "235
-[e = _packetCtrl _b ]
-[; ;main.c: 236: mode=(3);
+}
+[e :U 850 ]
+[; ;main.c: 235: }
+[; ;main.c: 236: if (spiRecvPtr==spiRecvLen)
 "236
-[e = _mode -> -> 3 `i `uc ]
-[; ;main.c: 237: packetAddress=-1;
+[e $ ! == -> _spiRecvPtr `i -> _spiRecvLen `i 851  ]
+[; ;main.c: 237: {
 "237
-[e = _packetAddress -> -U -> 1 `i `uc ]
-[; ;main.c: 238: packetRecvLen=-1;
+{
+[; ;main.c: 238: LATB2=0;
 "238
-[e = _packetRecvLen -> -U -> 1 `i `uc ]
-[; ;main.c: 239: continue;
+[e = _LATB2 -> -> 0 `i `b ]
+[; ;main.c: 239: spiRecvPtr=0;
 "239
-[e $U 845  ]
+[e = _spiRecvPtr -> -> 0 `i `uc ]
+[; ;main.c: 240: spiRecvLen=0;
 "240
+[e = _spiRecvLen -> -> 0 `i `uc ]
+"241
 }
-[e :U 854 ]
-[; ;main.c: 240: }
-[; ;main.c: 242: if (mode==(3))
+[e :U 851 ]
 "242
-[e $ ! == -> _mode `i -> 3 `i 855  ]
-[; ;main.c: 243: {
+}
+[; ;main.c: 241: }
+[; ;main.c: 242: }
+[e $U 852  ]
 "243
-{
-[; ;main.c: 244: packetAddress=b;
+[e :U 849 ]
+[; ;main.c: 243: else
+[; ;main.c: 244: {
 "244
-[e = _packetAddress _b ]
-[; ;main.c: 245: mode==(4);
+{
+[; ;main.c: 245: if (spiSendPtr<105)
 "245
-[e == -> _mode `i -> 4 `i ]
-[; ;main.c: 246: continue;
+[e $ ! < -> _spiSendPtr `i -> 105 `i 853  ]
+[; ;main.c: 246: {
 "246
-[e $U 845  ]
+{
+[; ;main.c: 247: spiSendBuffer[spiSendPtr++]=SSP1BUF;
 "247
-}
-[e :U 855 ]
-[; ;main.c: 247: }
-[; ;main.c: 248: if (mode==(4))
+[e = *U + &U _spiSendBuffer * -> ++ _spiSendPtr -> -> 1 `i `uc `ux -> -> # *U &U _spiSendBuffer `ui `ux _SSP1BUF ]
+[; ;main.c: 248: SSP1BUF=spiSendPtr;
 "248
-[e $ ! == -> _mode `i -> 4 `i 856  ]
-[; ;main.c: 249: {
+[e = _SSP1BUF _spiSendPtr ]
 "249
-{
-[; ;main.c: 250: packetRecvLen=b;
+}
+[e :U 853 ]
 "250
-[e = _packetRecvLen _b ]
-[; ;main.c: 251: mode=(5);
+}
+[e :U 852 ]
+[; ;main.c: 249: }
+[; ;main.c: 250: }
+[; ;main.c: 251: SSP1IF=0;
 "251
-[e = _mode -> -> 5 `i `uc ]
-[; ;main.c: 252: continue;
+[e = _SSP1IF -> -> 0 `i `b ]
 "252
-[e $U 845  ]
-"253
 }
-[e :U 856 ]
+[e :U 848 ]
+[; ;main.c: 252: }
 [; ;main.c: 253: }
-[; ;main.c: 254: if (mode==(5))
-"254
-[e $ ! == -> _mode `i -> 5 `i 857  ]
-[; ;main.c: 255: {
-"255
-{
-[; ;main.c: 256: if (packetCtrl==(0x82))
-"256
-[e $ ! == -> _packetCtrl `i -> 130 `i 858  ]
-[; ;main.c: 257: {
-"257
-{
-[; ;main.c: 258: adr=packetAddress+1;
-"258
-[e = _adr -> + -> _packetAddress `i -> 1 `i `uc ]
-[; ;main.c: 259: uartSendByte(&uart,packetCtrl);
-"259
-[e ( _uartSendByte (2 , &U _uart _packetCtrl ]
-[; ;main.c: 260: uartSendByte(&uart,adr);
-"260
-[e ( _uartSendByte (2 , &U _uart _adr ]
-[; ;main.c: 261: uartSendByte(&uart,nullByte);
-"261
-[e ( _uartSendByte (2 , &U _uart _nullByte ]
-[; ;main.c: 262: uartSendByte(&uart,nullByte);
-"262
-[e ( _uartSendByte (2 , &U _uart _nullByte ]
-[; ;main.c: 263: mode=(2);
-"263
-[e = _mode -> -> 2 `i `uc ]
-[; ;main.c: 264: continue;
-"264
-[e $U 845  ]
-"265
+"253
+[e :UE 839 ]
 }
-[e :U 858 ]
-[; ;main.c: 265: }
-[; ;main.c: 267: if (adr!=packetAddress)
+[v $root$_IntHighRoutine `(v ~T0 @X0 0 e ]
+[v F7077 `(v ~T0 @X0 1 tf ]
+"255
+[v _IntHighRoutine `IHF7077 ~T0 @X0 1 e ]
+"256
+{
+[; ;main.c: 255: void interrupt high_priority IntHighRoutine()
+[; ;main.c: 256: {
+[e :U _IntHighRoutine ]
+[f ]
+[; ;main.c: 257: INTCONbits.GIE=0;
+"257
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;main.c: 259: uartInterruptHandler(&(uart));
+"259
+[e ( _uartInterruptHandler (1 &U _uart ]
+[; ;main.c: 260: spiInterruptHandler();
+"260
+[e ( _spiInterruptHandler ..  ]
+[; ;main.c: 261: INTCONbits.GIE=1;
+"261
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 262: }
+"262
+[e :UE 854 ]
+}
+"264
+[v _myDelay `(v ~T0 @X0 1 ef1`l ]
+"265
+{
+[; ;main.c: 264: void myDelay(long per)
+[; ;main.c: 265: {
+[e :U _myDelay ]
+"264
+[v _per `l ~T0 @X0 1 r1 ]
+"265
+[f ]
+"266
+[v _i `i ~T0 @X0 1 a ]
+[; ;main.c: 266: int i;
+[; ;main.c: 267: while (per--!=0)
 "267
-[e $ ! != -> _adr `i -> _packetAddress `i 859  ]
+[e $U 856  ]
+[e :U 857 ]
 [; ;main.c: 268: {
 "268
 {
-[; ;main.c: 269: uartSendByte(&uart,packetCtrl);
+[; ;main.c: 269: i=16000000/4000;
 "269
-[e ( _uartSendByte (2 , &U _uart _packetCtrl ]
-[; ;main.c: 270: uartSendByte(&uart,packetAddress);
+[e = _i -> / -> 16000000 `l -> -> 4000 `i `l `i ]
+[; ;main.c: 270: while (i--!=0) {}
 "270
-[e ( _uartSendByte (2 , &U _uart _packetAddress ]
-[; ;main.c: 271: uartSendByte(&uart,packetRecvLen);
-"271
-[e ( _uartSendByte (2 , &U _uart _packetRecvLen ]
-[; ;main.c: 272: uartSendByte(&uart,b);
-"272
-[e ( _uartSendByte (2 , &U _uart _b ]
-[; ;main.c: 273: mode=(6);
-"273
-[e = _mode -> -> 6 `i `uc ]
-[; ;main.c: 274: continue;
-"274
-[e $U 845  ]
-"275
+[e $U 859  ]
+[e :U 860 ]
+{
 }
 [e :U 859 ]
-[; ;main.c: 275: }
-[; ;main.c: 277: if (packetCtrl==(0x83))
-"277
-[e $ ! == -> _packetCtrl `i -> 131 `i 860  ]
-[; ;main.c: 278: {
-"278
-{
-[; ;main.c: 279: uartSendByte(&uart,packetCtrl);
-"279
-[e ( _uartSendByte (2 , &U _uart _packetCtrl ]
-[; ;main.c: 280: uartSendByte(&uart,adr);
-"280
-[e ( _uartSendByte (2 , &U _uart _adr ]
-[; ;main.c: 281: uartSendByte(&uart,nullByte);
-"281
-[e ( _uartSendByte (2 , &U _uart _nullByte ]
-[; ;main.c: 282: uartSendByte(&uart,nullByte);
-"282
-[e ( _uartSendByte (2 , &U _uart _nullByte ]
-[; ;main.c: 283: mode=(2);
-"283
-[e = _mode -> -> 2 `i `uc ]
-[; ;main.c: 284: continue;
-"284
-[e $U 845  ]
-"285
-}
-[e :U 860 ]
-[; ;main.c: 285: }
-[; ;main.c: 286: if (packetCtrl==(0x80) || packetCtrl==(0x81))
-"286
-[e $ ! || == -> _packetCtrl `i -> 128 `i == -> _packetCtrl `i -> 129 `i 861  ]
-[; ;main.c: 287: {
-"287
-{
-[; ;main.c: 288: mode=(7);
-"288
-[e = _mode -> -> 7 `i `uc ]
-[; ;main.c: 289: pckRecvPtr=0;
-"289
-[e = _pckRecvPtr -> -> 0 `i `uc ]
-[; ;main.c: 290: continue;
-"290
-[e $U 845  ]
-"291
-}
+[e $ != -- _i -> 1 `i -> 0 `i 860  ]
 [e :U 861 ]
-"292
+"271
 }
-[e :U 857 ]
-[; ;main.c: 291: }
-[; ;main.c: 292: }
-[; ;main.c: 294: if (mode==(6))
+[e :U 856 ]
+"267
+[e $ != -- _per -> -> 1 `i `l -> -> 0 `i `l 857  ]
+[e :U 858 ]
+[; ;main.c: 271: }
+[; ;main.c: 272: }
+"272
+[e :UE 855 ]
+}
+"274
+[v _setDataAvailable `(v ~T0 @X0 1 ef ]
+"275
+{
+[; ;main.c: 274: void setDataAvailable()
+[; ;main.c: 275: {
+[e :U _setDataAvailable ]
+[f ]
+[; ;main.c: 276: LATB2=1;
+"276
+[e = _LATB2 -> -> 1 `i `b ]
+[; ;main.c: 277: }
+"277
+[e :UE 862 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"279
+[v _main `(v ~T0 @X0 1 ef ]
+"280
+{
+[; ;main.c: 279: void main(void)
+[; ;main.c: 280: {
+[e :U _main ]
+[f ]
+"281
+[v _b `uc ~T0 @X0 1 a ]
+"282
+[v _pckRecvPtr `uc ~T0 @X0 1 a ]
+[; ;main.c: 281: char b;
+[; ;main.c: 282: char pckRecvPtr=0;
+[e = _pckRecvPtr -> -> 0 `i `uc ]
+[; ;main.c: 283: adr=-1;
+"283
+[e = _adr -> -U -> 1 `i `uc ]
+[; ;main.c: 285: InitSystem();
+"285
+[e ( _InitSystem ..  ]
+[; ;main.c: 287: ledOn(&ledRx);
+"287
+[e ( _ledOn (1 &U _ledRx ]
+[; ;main.c: 288: ledOn(&ledTx);
+"288
+[e ( _ledOn (1 &U _ledTx ]
+[; ;main.c: 290: InitUart();
+"290
+[e ( _InitUart ..  ]
+[; ;main.c: 291: myDelay(500);
+"291
+[e ( _myDelay (1 -> -> 500 `i `l ]
+[; ;main.c: 293: ledOff(&ledRx);
+"293
+[e ( _ledOff (1 &U _ledRx ]
+[; ;main.c: 294: ledOff(&ledTx);
 "294
-[e $ ! == -> _mode `i -> 6 `i 862  ]
-[; ;main.c: 295: {
-"295
-{
-[; ;main.c: 296: uartSendByte(&uart,b);
+[e ( _ledOff (1 &U _ledTx ]
+[; ;main.c: 296: mode=(2);
 "296
-[e ( _uartSendByte (2 , &U _uart _b ]
+[e = _mode -> -> 2 `i `uc ]
+[; ;main.c: 297: packetAddress=-1;
 "297
-}
-[e :U 862 ]
-[; ;main.c: 297: }
-[; ;main.c: 298: if (mode==(7))
+[e = _packetAddress -> -U -> 1 `i `uc ]
+[; ;main.c: 298: packetRecvLen=-1;
 "298
-[e $ ! == -> _mode `i -> 7 `i 863  ]
-[; ;main.c: 299: {
-"299
-{
-[; ;main.c: 300: packetRecvBuffer[pckRecvPtr++]=b;
+[e = _packetRecvLen -> -U -> 1 `i `uc ]
+[; ;main.c: 300: while (1)
 "300
-[e = *U + &U _packetRecvBuffer * -> ++ _pckRecvPtr -> -> 1 `i `uc `ux -> -> # *U &U _packetRecvBuffer `ui `ux _b ]
-[; ;main.c: 301: if (pckRecvPtr==packetRecvLen)
+[e :U 865 ]
+[; ;main.c: 301: {
 "301
-[e $ ! == -> _pckRecvPtr `i -> _packetRecvLen `i 864  ]
-[; ;main.c: 302: mode=(8);
+{
+[; ;main.c: 302: if (mode==(1))
 "302
-[e = _mode -> -> 8 `i `uc ]
-[e :U 864 ]
-[; ;main.c: 303: continue;
+[e $ ! == -> _mode `i -> 1 `i 867  ]
+[; ;main.c: 303: {
 "303
-[e $U 845  ]
+{
+[; ;main.c: 304: if (uart.status & 2)
 "304
-}
-[e :U 863 ]
-[; ;main.c: 304: }
-[; ;main.c: 305: if (mode==(8))
+[e $ ! != & -> . _uart 6 `i -> 2 `i -> 0 `i 868  ]
+[; ;main.c: 305: {
 "305
-[e $ ! == -> _mode `i -> 8 `i 865  ]
-[; ;main.c: 306: {
+{
+[; ;main.c: 306: mode=(2);
 "306
-{
-[; ;main.c: 307: if(crcOk(b))
+[e = _mode -> -> 2 `i `uc ]
 "307
-[e $ ! != -> ( _crcOk (1 _b `i -> -> -> 0 `i `uc `i 866  ]
-[; ;main.c: 308: {
+}
+[; ;main.c: 307: }
+[e $U 869  ]
 "308
-{
-[; ;main.c: 309: if (packetCtrl==(0x81))
+[e :U 868 ]
+[; ;main.c: 308: else
+[; ;main.c: 309: {
 "309
-[e $ ! == -> _packetCtrl `i -> 129 `i 867  ]
-[; ;main.c: 310: {
-"310
 {
-[; ;main.c: 311: uartSendByte(&uart,packetCtrl);
+[; ;main.c: 310: ledFlash(&ledTx);
+"310
+[e ( _ledFlash (1 &U _ledTx ]
+[; ;main.c: 311: continue;
 "311
-[e ( _uartSendByte (2 , &U _uart _packetCtrl ]
-[; ;main.c: 312: uartSendByte(&uart,adr);
+[e $U 864  ]
 "312
-[e ( _uartSendByte (2 , &U _uart _adr ]
-[; ;main.c: 313: uartSendByte(&uart,nullByte);
+}
+[e :U 869 ]
 "313
-[e ( _uartSendByte (2 , &U _uart _nullByte ]
-[; ;main.c: 314: uartSendByte(&uart,nullByte);
-"314
-[e ( _uartSendByte (2 , &U _uart _nullByte ]
-"315
 }
 [e :U 867 ]
-[; ;main.c: 315: }
-[; ;main.c: 316: decodeRecvBuffer();
+[; ;main.c: 312: }
+[; ;main.c: 313: }
+[; ;main.c: 315: if (mode==(2))
+"315
+[e $ ! == -> _mode `i -> 2 `i 870  ]
+[; ;main.c: 316: {
 "316
-[e ( _decodeRecvBuffer ..  ]
-[; ;main.c: 317: dataAvailable=1;
+{
+[; ;main.c: 317: if (packetSendEnable)
 "317
-[e = _dataAvailable -> -> 1 `i `uc ]
+[e $ ! != -> _packetSendEnable `i -> -> -> 0 `i `uc `i 871  ]
+[; ;main.c: 318: {
 "318
-}
-[e :U 866 ]
-[; ;main.c: 318: }
-[; ;main.c: 319: mode=(2);
+{
+[; ;main.c: 319: uartSendByte(&uart,(0x80));
 "319
-[e = _mode -> -> 2 `i `uc ]
-[; ;main.c: 320: continue;
+[e ( _uartSendByte (2 , &U _uart -> -> 128 `i `uc ]
+[; ;main.c: 320: uartSendByte(&uart,(0));
 "320
-[e $U 845  ]
+[e ( _uartSendByte (2 , &U _uart -> -> 0 `i `uc ]
+[; ;main.c: 321: uartSendByte(&uart,packetSendLen);
 "321
-}
-[e :U 865 ]
-[; ;main.c: 321: }
-[; ;main.c: 323: ledTact(&ledRx);
+[e ( _uartSendByte (2 , &U _uart _packetSendLen ]
+[; ;main.c: 322: uartSendBuf(&uart,packetSendBuffer,packetSendLen);
+"322
+[e ( _uartSendBuf (3 , , &U _uart &U _packetSendBuffer _packetSendLen ]
+[; ;main.c: 323: uartSendByte(&uart,packetSendCrc);
 "323
-[e ( _ledTact (1 &U _ledRx ]
-[; ;main.c: 324: ledTact(&ledTx);
+[e ( _uartSendByte (2 , &U _uart _packetSendCrc ]
+[; ;main.c: 324: mode=(1);
 "324
-[e ( _ledTact (1 &U _ledTx ]
+[e = _mode -> -> 1 `i `uc ]
+[; ;main.c: 325: packetSendEnable=0;
 "325
-}
-[e :U 845 ]
-"201
-[e $U 846  ]
-[e :U 847 ]
-[; ;main.c: 325: }
-[; ;main.c: 326: }
+[e = _packetSendEnable -> -> 0 `i `uc ]
+[; ;main.c: 326: continue;
 "326
-[e :UE 844 ]
+[e $U 864  ]
+"327
+}
+[e :U 871 ]
+"328
+}
+[e :U 870 ]
+[; ;main.c: 327: }
+[; ;main.c: 328: }
+[; ;main.c: 330: if (!uartRecvByte(&uart,b))
+"330
+[e $ ! ! != -> ( _uartRecvByte (2 , &U _uart -> _b `*uc `i -> -> -> 0 `i `uc `i 872  ]
+[; ;main.c: 331: continue;
+"331
+[e $U 864  ]
+[e :U 872 ]
+[; ;main.c: 333: ledFlash(&ledRx);
+"333
+[e ( _ledFlash (1 &U _ledRx ]
+[; ;main.c: 335: if (b & 128)
+"335
+[e $ ! != & -> _b `i -> 128 `i -> 0 `i 873  ]
+[; ;main.c: 336: {
+"336
+{
+[; ;main.c: 338: packetCtrl=b;
+"338
+[e = _packetCtrl _b ]
+[; ;main.c: 339: mode=(3);
+"339
+[e = _mode -> -> 3 `i `uc ]
+[; ;main.c: 340: packetAddress=-1;
+"340
+[e = _packetAddress -> -U -> 1 `i `uc ]
+[; ;main.c: 341: packetRecvLen=-1;
+"341
+[e = _packetRecvLen -> -U -> 1 `i `uc ]
+[; ;main.c: 342: continue;
+"342
+[e $U 864  ]
+"343
+}
+[e :U 873 ]
+[; ;main.c: 343: }
+[; ;main.c: 345: if (mode==(3))
+"345
+[e $ ! == -> _mode `i -> 3 `i 874  ]
+[; ;main.c: 346: {
+"346
+{
+[; ;main.c: 347: packetAddress=b;
+"347
+[e = _packetAddress _b ]
+[; ;main.c: 348: mode==(4);
+"348
+[e == -> _mode `i -> 4 `i ]
+[; ;main.c: 349: continue;
+"349
+[e $U 864  ]
+"350
+}
+[e :U 874 ]
+[; ;main.c: 350: }
+[; ;main.c: 351: if (mode==(4))
+"351
+[e $ ! == -> _mode `i -> 4 `i 875  ]
+[; ;main.c: 352: {
+"352
+{
+[; ;main.c: 353: packetRecvLen=b;
+"353
+[e = _packetRecvLen _b ]
+[; ;main.c: 354: mode=(5);
+"354
+[e = _mode -> -> 5 `i `uc ]
+[; ;main.c: 355: continue;
+"355
+[e $U 864  ]
+"356
+}
+[e :U 875 ]
+[; ;main.c: 356: }
+[; ;main.c: 357: if (mode==(5))
+"357
+[e $ ! == -> _mode `i -> 5 `i 876  ]
+[; ;main.c: 358: {
+"358
+{
+[; ;main.c: 359: if (packetCtrl==(0x82))
+"359
+[e $ ! == -> _packetCtrl `i -> 130 `i 877  ]
+[; ;main.c: 360: {
+"360
+{
+[; ;main.c: 361: adr=packetAddress+1;
+"361
+[e = _adr -> + -> _packetAddress `i -> 1 `i `uc ]
+[; ;main.c: 362: uartSendByte(&uart,packetCtrl);
+"362
+[e ( _uartSendByte (2 , &U _uart _packetCtrl ]
+[; ;main.c: 363: uartSendByte(&uart,adr);
+"363
+[e ( _uartSendByte (2 , &U _uart _adr ]
+[; ;main.c: 364: uartSendByte(&uart,(0));
+"364
+[e ( _uartSendByte (2 , &U _uart -> -> 0 `i `uc ]
+[; ;main.c: 365: uartSendByte(&uart,(0));
+"365
+[e ( _uartSendByte (2 , &U _uart -> -> 0 `i `uc ]
+[; ;main.c: 366: mode=(2);
+"366
+[e = _mode -> -> 2 `i `uc ]
+[; ;main.c: 367: continue;
+"367
+[e $U 864  ]
+"368
+}
+[e :U 877 ]
+[; ;main.c: 368: }
+[; ;main.c: 370: if (adr!=packetAddress)
+"370
+[e $ ! != -> _adr `i -> _packetAddress `i 878  ]
+[; ;main.c: 371: {
+"371
+{
+[; ;main.c: 372: uartSendByte(&uart,packetCtrl);
+"372
+[e ( _uartSendByte (2 , &U _uart _packetCtrl ]
+[; ;main.c: 373: uartSendByte(&uart,packetAddress);
+"373
+[e ( _uartSendByte (2 , &U _uart _packetAddress ]
+[; ;main.c: 374: uartSendByte(&uart,packetRecvLen);
+"374
+[e ( _uartSendByte (2 , &U _uart _packetRecvLen ]
+[; ;main.c: 375: uartSendByte(&uart,b);
+"375
+[e ( _uartSendByte (2 , &U _uart _b ]
+[; ;main.c: 376: mode=(6);
+"376
+[e = _mode -> -> 6 `i `uc ]
+[; ;main.c: 377: continue;
+"377
+[e $U 864  ]
+"378
+}
+[e :U 878 ]
+[; ;main.c: 378: }
+[; ;main.c: 380: if (packetCtrl==(0x83))
+"380
+[e $ ! == -> _packetCtrl `i -> 131 `i 879  ]
+[; ;main.c: 381: {
+"381
+{
+[; ;main.c: 382: uartSendByte(&uart,packetCtrl);
+"382
+[e ( _uartSendByte (2 , &U _uart _packetCtrl ]
+[; ;main.c: 383: uartSendByte(&uart,adr);
+"383
+[e ( _uartSendByte (2 , &U _uart _adr ]
+[; ;main.c: 384: uartSendByte(&uart,(0));
+"384
+[e ( _uartSendByte (2 , &U _uart -> -> 0 `i `uc ]
+[; ;main.c: 385: uartSendByte(&uart,(0));
+"385
+[e ( _uartSendByte (2 , &U _uart -> -> 0 `i `uc ]
+[; ;main.c: 386: mode=(2);
+"386
+[e = _mode -> -> 2 `i `uc ]
+[; ;main.c: 387: continue;
+"387
+[e $U 864  ]
+"388
+}
+[e :U 879 ]
+[; ;main.c: 388: }
+[; ;main.c: 389: if (packetCtrl==(0x80) || packetCtrl==(0x81))
+"389
+[e $ ! || == -> _packetCtrl `i -> 128 `i == -> _packetCtrl `i -> 129 `i 880  ]
+[; ;main.c: 390: {
+"390
+{
+[; ;main.c: 391: mode=(7);
+"391
+[e = _mode -> -> 7 `i `uc ]
+[; ;main.c: 392: pckRecvPtr=0;
+"392
+[e = _pckRecvPtr -> -> 0 `i `uc ]
+[; ;main.c: 393: continue;
+"393
+[e $U 864  ]
+"394
+}
+[e :U 880 ]
+"395
+}
+[e :U 876 ]
+[; ;main.c: 394: }
+[; ;main.c: 395: }
+[; ;main.c: 397: if (mode==(6))
+"397
+[e $ ! == -> _mode `i -> 6 `i 881  ]
+[; ;main.c: 398: {
+"398
+{
+[; ;main.c: 399: uartSendByte(&uart,b);
+"399
+[e ( _uartSendByte (2 , &U _uart _b ]
+"400
+}
+[e :U 881 ]
+[; ;main.c: 400: }
+[; ;main.c: 401: if (mode==(7))
+"401
+[e $ ! == -> _mode `i -> 7 `i 882  ]
+[; ;main.c: 402: {
+"402
+{
+[; ;main.c: 403: packetRecvBuffer[pckRecvPtr++]=b;
+"403
+[e = *U + &U _packetRecvBuffer * -> ++ _pckRecvPtr -> -> 1 `i `uc `ux -> -> # *U &U _packetRecvBuffer `ui `ux _b ]
+[; ;main.c: 404: if (pckRecvPtr==packetRecvLen)
+"404
+[e $ ! == -> _pckRecvPtr `i -> _packetRecvLen `i 883  ]
+[; ;main.c: 405: mode=(8);
+"405
+[e = _mode -> -> 8 `i `uc ]
+[e :U 883 ]
+[; ;main.c: 406: continue;
+"406
+[e $U 864  ]
+"407
+}
+[e :U 882 ]
+[; ;main.c: 407: }
+[; ;main.c: 408: if (mode==(8))
+"408
+[e $ ! == -> _mode `i -> 8 `i 884  ]
+[; ;main.c: 409: {
+"409
+{
+[; ;main.c: 410: if(crcOk(b))
+"410
+[e $ ! != -> ( _crcOk (1 _b `i -> -> -> 0 `i `uc `i 885  ]
+[; ;main.c: 411: {
+"411
+{
+[; ;main.c: 412: if (packetCtrl==(0x81))
+"412
+[e $ ! == -> _packetCtrl `i -> 129 `i 886  ]
+[; ;main.c: 413: {
+"413
+{
+[; ;main.c: 414: uartSendByte(&uart,packetCtrl);
+"414
+[e ( _uartSendByte (2 , &U _uart _packetCtrl ]
+[; ;main.c: 415: uartSendByte(&uart,adr);
+"415
+[e ( _uartSendByte (2 , &U _uart _adr ]
+[; ;main.c: 416: uartSendByte(&uart,(0));
+"416
+[e ( _uartSendByte (2 , &U _uart -> -> 0 `i `uc ]
+[; ;main.c: 417: uartSendByte(&uart,(0));
+"417
+[e ( _uartSendByte (2 , &U _uart -> -> 0 `i `uc ]
+"418
+}
+[e :U 886 ]
+[; ;main.c: 418: }
+[; ;main.c: 420: decodeRecvBuffer();
+"420
+[e ( _decodeRecvBuffer ..  ]
+[; ;main.c: 421: setDataAvailable();
+"421
+[e ( _setDataAvailable ..  ]
+"422
+}
+[e :U 885 ]
+[; ;main.c: 422: }
+[; ;main.c: 423: mode=(2);
+"423
+[e = _mode -> -> 2 `i `uc ]
+[; ;main.c: 424: continue;
+"424
+[e $U 864  ]
+"425
+}
+[e :U 884 ]
+[; ;main.c: 425: }
+[; ;main.c: 427: ledTact(&ledRx);
+"427
+[e ( _ledTact (1 &U _ledRx ]
+[; ;main.c: 428: ledTact(&ledTx);
+"428
+[e ( _ledTact (1 &U _ledTx ]
+"429
+}
+[e :U 864 ]
+"300
+[e $U 865  ]
+[e :U 866 ]
+[; ;main.c: 429: }
+[; ;main.c: 430: }
+"430
+[e :UE 863 ]
 }

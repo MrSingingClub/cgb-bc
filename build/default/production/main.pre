@@ -8402,11 +8402,11 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
-# 66 "main.c"
+# 68 "main.c"
 unsigned char uartSendBuffer[132];
 unsigned char uartRecvBuffer[132];
-char packetRecvBuffer[132];
-char packetSendBuffer[132];
+char packetRecvBuffer[127];
+char packetSendBuffer[127];
 char spiRecvBuffer[106];
 char spiSendBuffer[106];
 
@@ -8417,14 +8417,22 @@ uartType uart;
 
 char adr;
 char mode;
-char packetReady;
 char dataAvailable;
+
+char spiReadWrite;
+char spiRecvLen;
+char spiRecvPtr;
+char spiSendPtr;
 
 char packetSendLen;
 
 char packetCtrl;
 char packetAddress;
 char packetRecvLen;
+
+char packetSendLen;
+char packetSendCrc;
+char packetSendEnable;
 
 void LoadConfigData(void)
 {
@@ -8456,6 +8464,8 @@ PIE5=0;
 RCONbits.IPEN = 0;
 INTCONbits.PEIE = 1;
 INTCONbits.GIE = 1;
+INTCONbits.RBIE = 1;
+IOCB4=1;
 
 
 TRISAbits.RA0=0;
@@ -8470,8 +8480,10 @@ ANSELAbits.ANSA2=0;
 ANSELAbits.ANSA3=0;
 ANSELAbits.ANSA5=0;
 
-TRISBbits.RB4=0;
-TRISBbits.RB5=0;
+TRISBbits.RB2=0;
+TRISBbits.RB3=1;
+TRISBbits.RB4=1;
+
 
 ledInit(&(ledRx),(5),(5),0b00000001);
 ledInit(&(ledTx),(5),(5),0b00000010);
@@ -8480,10 +8492,102 @@ ledInit(&(ledTx),(5),(5),0b00000010);
 void InitUart()
 {
 uartInit(&(uart),1,9600,64000000,uartSendBuffer,160,uartRecvBuffer,160);
-uartInitHalfDuplex(&(uart),&LATB,5);
+
 
 uartEnableSend(&(uart),1);
 uartEnableRecv(&(uart),1);
+}
+
+void InitSPI()
+{
+TRISAbits.RA5=1;
+TRISCbits.RC5=0;
+TRISCbits.RC4=1;
+TRISCbits.RC3=1;
+
+}
+char crcOk(char crc)
+{
+return 1;
+}
+
+char crcCalc()
+{
+return 0;
+}
+
+char encodeSendBuffer()
+{
+
+}
+char decodeRecvBuffer()
+{
+
+}
+
+void spiInterruptHandler()
+{
+if (RBIF)
+{
+if (PORTBbits.RB4==0)
+{
+spiReadWrite=PORTBbits.RB3;
+if (spiReadWrite)
+{
+SSP1BUF=spiRecvBuffer[spiRecvPtr++];
+if (spiRecvPtr==spiRecvLen)
+{
+LATB2=0;
+}
+}
+else
+{
+spiSendPtr=0;
+SSP1BUF=spiSendPtr;
+}
+}
+if (PORTBbits.RB4==1)
+{
+if (spiReadWrite)
+{
+
+}
+else
+{
+packetSendLen=encodeSendBuffer();
+packetSendCrc=crcCalc();
+packetSendEnable=1;
+spiSendPtr=0;
+}
+}
+RBIF=0;
+}
+
+if (SSP1IF)
+{
+if (spiReadWrite)
+{
+if (spiRecvPtr<spiRecvLen)
+{
+SSP1BUF=spiRecvBuffer[spiRecvPtr++];
+}
+if (spiRecvPtr==spiRecvLen)
+{
+LATB2=0;
+spiRecvPtr=0;
+spiRecvLen=0;
+}
+}
+else
+{
+if (spiSendPtr<105)
+{
+spiSendBuffer[spiSendPtr++]=SSP1BUF;
+SSP1BUF=spiSendPtr;
+}
+}
+SSP1IF=0;
+}
 }
 
 void interrupt high_priority IntHighRoutine()
@@ -8491,7 +8595,7 @@ void interrupt high_priority IntHighRoutine()
 INTCONbits.GIE=0;
 
 uartInterruptHandler(&(uart));
-
+spiInterruptHandler();
 INTCONbits.GIE=1;
 }
 
@@ -8505,21 +8609,14 @@ while (i--!=0) {}
 }
 }
 
-char crcOk(char crc)
+void setDataAvailable()
 {
-return 1;
-}
-
-void decodeRecvBuffer()
-{
-
+LATB2=1;
 }
 
 void main(void)
 {
 char b;
-char newByte;
-char nullByte=0;
 char pckRecvPtr=0;
 adr=-1;
 
@@ -8555,11 +8652,15 @@ continue;
 
 if (mode==(2))
 {
-if (packetReady)
+if (packetSendEnable)
 {
-uartSendBuf(&uart,packetRecvBuffer,packetReady);
+uartSendByte(&uart,(0x80));
+uartSendByte(&uart,(0));
+uartSendByte(&uart,packetSendLen);
+uartSendBuf(&uart,packetSendBuffer,packetSendLen);
+uartSendByte(&uart,packetSendCrc);
 mode=(1);
-packetReady=0;
+packetSendEnable=0;
 continue;
 }
 }
@@ -8598,8 +8699,8 @@ if (packetCtrl==(0x82))
 adr=packetAddress+1;
 uartSendByte(&uart,packetCtrl);
 uartSendByte(&uart,adr);
-uartSendByte(&uart,nullByte);
-uartSendByte(&uart,nullByte);
+uartSendByte(&uart,(0));
+uartSendByte(&uart,(0));
 mode=(2);
 continue;
 }
@@ -8618,8 +8719,8 @@ if (packetCtrl==(0x83))
 {
 uartSendByte(&uart,packetCtrl);
 uartSendByte(&uart,adr);
-uartSendByte(&uart,nullByte);
-uartSendByte(&uart,nullByte);
+uartSendByte(&uart,(0));
+uartSendByte(&uart,(0));
 mode=(2);
 continue;
 }
@@ -8650,11 +8751,12 @@ if (packetCtrl==(0x81))
 {
 uartSendByte(&uart,packetCtrl);
 uartSendByte(&uart,adr);
-uartSendByte(&uart,nullByte);
-uartSendByte(&uart,nullByte);
+uartSendByte(&uart,(0));
+uartSendByte(&uart,(0));
 }
+
 decodeRecvBuffer();
-dataAvailable=1;
+setDataAvailable();
 }
 mode=(2);
 continue;
